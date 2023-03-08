@@ -6,7 +6,6 @@
 <br>
 [![Discord](https://img.shields.io/discord/704685696513736765?label=Discord&style=flat&logo=discord)](https://discord.gg/pkWbhDn)
 </div>
-<br>
 
 ## 👋 Introduction
 
@@ -15,8 +14,7 @@ You can communicate with it orally or in writing, most of his skills are designe
 
 ## 🔧 Prerequisites
 
-[<img src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/nodeJSLogo.png" width="18" /> Node.js](https://nodejs.org/)<br/>
-[<img src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/npmLogo.png" width="18" /> npm](https://npmjs.com/)<br/>
+[<img src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/pythonLogo.png" width="18" /> Python](https://www.python.org/downloads/)
 
 ## ⬇️ Installation
 
