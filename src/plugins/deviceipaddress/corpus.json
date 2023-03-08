@@ -1,0 +1,28 @@
+[
+  {
+    "intent": "deviceipaddress.get",
+    "utterances": [
+      "Quel est votre ip",
+      "Quel est ton ip",
+      "Dites-moi votre ip",
+      "Dis-moi ton ip",
+      "Donnez-moi votre ip",
+      "Donne-moi ton ip",
+      "Quelle est votre adresse réseau",
+      "Quelle est ton adresse réseau",
+      "Quelle est votre adresse ip",
+      "Quelle est ton adresse ip",
+      "Dites-moi votre adresse réseau",
+      "Dis-moi ton adresse réseau",
+      "Dites-moi votre adresse ip",
+      "Dis-moi ton adresse ip",
+      "Donnez-moi votre adresse réseau",
+      "Donne-moi ton adresse réseau",
+      "Donnez-moi votre adresse ip",
+      "Donne-moi ton adresse ip"
+    ],
+    "answers": [
+      "Mon addresse IP est %address%."
+    ]
+  }
+]

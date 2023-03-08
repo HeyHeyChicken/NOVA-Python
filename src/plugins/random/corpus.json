@@ -1,0 +1,45 @@
+[
+  {
+    "intent": "random.dice",
+    "utterances": [
+      "Lance un dé",
+      "Jette un dé"
+    ],
+    "answers": [
+      "Le dé est tomber sur %result%.",
+      "%result%"
+    ]
+  },
+  {
+    "intent": "random.between",
+    "utterances": [
+      "Donne-moi un chiffre entre {first|1} et {last|1}",
+      "Donne-moi un nombre entre {first|1} et {last|1}",
+      "Donne-moi un chiffre aléatoire entre {first|1} et {last|1}",
+      "Donne-moi un nombre aléatoire entre {first|1} et {last|1}",
+      "Donne-moi un chiffre au hasard entre {first|1} et {last|1}",
+      "Donne-moi un nombre au hasard entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre entre {first|1} et {last|1}",
+      "Donnez-moi un nombre entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre aléatoire entre {first|1} et {last|1}",
+      "Donnez-moi un nombre aléatoire entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre au hasard entre {first|1} et {last|1}",
+      "Donnez-moi un nombre au hasard entre {first|1} et {last|1}",
+      "Donne-moi un chiffre compris entre {first|1} et {last|1}",
+      "Donne-moi un nombre compris entre {first|1} et {last|1}",
+      "Donne-moi un chiffre aléatoire compris entre {first|1} et {last|1}",
+      "Donne-moi un nombre aléatoire compris entre {first|1} et {last|1}",
+      "Donne-moi un chiffre au hasard compris entre {first|1} et {last|1}",
+      "Donne-moi un nombre au hasard compris entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre compris entre {first|1} et {last|1}",
+      "Donnez-moi un nombre compris entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre aléatoire compris entre {first|1} et {last|1}",
+      "Donnez-moi un nombre aléatoire compris entre {first|1} et {last|1}",
+      "Donnez-moi un chiffre au hasard compris entre {first|1} et {last|1}",
+      "Donnez-moi un nombre au hasard compris entre {first|1} et {last|1}"
+    ],
+    "answers": [
+      "%result%"
+    ]
+  }
+]

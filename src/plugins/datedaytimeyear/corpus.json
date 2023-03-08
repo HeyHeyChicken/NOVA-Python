@@ -1,0 +1,65 @@
+[
+  {
+    "intent": "date.get",
+    "utterances": [
+      "Nous sommes le combien",
+      "Quel jour sommes-nous",
+      "Quelle est la date du jour",
+      "Quelle est la date",
+      "Quelle date on est",
+      "Quelle date est-on",
+      "Quelle date sommes-nous",
+      "Quelle est la date du jour",
+      "On est quelle date",
+      "Donne-moi la date du jour",
+      "Donne-moi la date d'aujourd'hui",
+      "Donne-moi la date du jour s'il te plaît",
+      "Donne-moi la date d'aujourd'hui s'il te plaît"
+    ],
+    "answers": [
+      "Nous sommes le %date%."
+    ]
+  },
+  {
+    "intent": "time.get",
+    "utterances": [
+      "Quelle heure est-il",
+      "Quelle heure est-il s'il te plaît",
+      "Donne-moi l'heure",
+      "Donne-moi l'heure s'il te plaît",
+      "Quelle heure il est",
+      "Quelle heure il est s'il te plaît"
+    ],
+    "answers": [
+      "Il est %hour% heures %minute%."
+    ]
+  },
+  {
+    "intent": "year.get",
+    "utterances": [
+      "Quelle année sommes-nous",
+      "En quelle année sommes-nous",
+      "Quelle est l'année courante s'il te plaît",
+      "Quelle est l'année courante",
+      "Donne-moi l'année s'il te plaît",
+      "Donne-moi l'année"
+    ],
+    "answers": [
+      "Nous sommes en %year%."
+    ]
+  },
+  {
+    "intent": "day.get",
+    "utterances": [
+      "Quel jour il est",
+      "Quel jour est-il",
+      "Quel jour est-on",
+      "Quel jour sommes-nous",
+      "Quel jour de la semaine sommes-nous",
+      "Quel jour on est"
+    ],
+    "answers": [
+      "Nous sommes %day%."
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "intent": "count.up",
+    "utterances": [
+      "Compte jusqu'à {number|1}"
+    ]
+  },
+  {
+    "intent": "count.down",
+    "utterances": [
+      "Compte à rebours à partir de {number|1}"
+    ]
+  },
+  {
+    "intent": "count.from.to",
+    "utterances": [
+      "Compte de {from|1} à {to|1}"
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+[
+    {
+      "intent": "mediastack.get.news",
+      "utterances": [
+        "Quelles sont les actualités",
+        "Quels sont les actualités",
+        "Actualité"
+      ],
+      "answers": []
+    }
+  ]
