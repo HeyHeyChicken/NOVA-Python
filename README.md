@@ -2,7 +2,7 @@
 
 <img src="https://github.com/HeyHeyChicken/NOVA/blob/master/resources/github-logo.svg" alt="NOVA" width="300">
 
-**NOVA** is an efficient personal assistant made with Node.js.<br>
+**NOVA** is an efficient personal assistant made with python.<br>
 <br>
 [![Discord](https://img.shields.io/discord/704685696513736765?label=Discord&style=flat&logo=discord)](https://discord.gg/pkWbhDn)
 </div>
