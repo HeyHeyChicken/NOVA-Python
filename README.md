@@ -9,8 +9,8 @@
 
 ## 👋 Introduction
 
-**NOVA-Python** is an open-source personal assistant that you can host on your server.<br/>
-You can communicate with it orally or in writing, most of his skills are designed to work offline to protect your privacy.
+**NOVA-Python** is an open-source personal assistant that you can host on your computer.<br/>
+You can communicate with it orally, most of his skills are designed to work offline to protect your privacy.
 
 ## 🔧 Prerequisites
 
@@ -27,7 +27,7 @@ git clone https://github.com/HeyHeyChicken/Nova-python.git
 
 Launch this command.
 ```
-node index.js
+python main.py
 ```
 
 ## 🫵 Support and contribution
