@@ -1,7 +1,9 @@
 import sounddevice
 import vosk
 import queue
+import json
 import sys
+import os
 from print_color import print
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
@@ -20,7 +22,7 @@ from src.plugins.random.index import Random
 #endregion
 
 class Nova:        
-    def __init__(self):
+    def __init__(self, rootPath: str):
         self.model = None
         self.samplerate = None
         self.q = queue.Queue()
@@ -41,10 +43,12 @@ class Nova:
 
         #endregion
         
+        settingsPath = os.path.join(rootPath, "settings.json")
+        settings = json.load(open(settingsPath, encoding='utf-8'))
+        
         self.print("Welcome to NOVA!")
-        sounddevice.query_devices('')
         try:
-            deviceInfo = sounddevice.query_devices('input')
+            deviceInfo = sounddevice.query_devices(settings.audio.input)
         except Exception as e:
             self.print(e, "red")
             self.print("Audio input not found.", "red")
