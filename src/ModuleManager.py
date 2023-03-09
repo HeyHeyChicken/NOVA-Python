@@ -16,6 +16,7 @@ class ModuleManager:
             "print-color": "",
             "vosk": "",
             "sounddevice": "",
+            "pyaudio": "",
             "playsound": "1.2.2",
         }
         
