@@ -45,11 +45,10 @@ class Nova:
         
         settingsPath = os.path.join(rootPath, "settings.json")
         settings = json.load(open(settingsPath, encoding='utf-8'))
-        print(settings)
         
         self.print("Welcome to NOVA!")
         try:
-            deviceInfo = sounddevice.query_devices(settings.audio.input)
+            deviceInfo = sounddevice.query_devices(settings["audio"]["input"])
         except Exception as e:
             self.print(e, "red")
             self.print("Audio input not found.", "red")
