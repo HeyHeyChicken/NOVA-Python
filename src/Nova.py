@@ -45,6 +45,7 @@ class Nova:
         
         settingsPath = os.path.join(rootPath, "settings.json")
         settings = json.load(open(settingsPath, encoding='utf-8'))
+        print(settings)
         
         self.print("Welcome to NOVA!")
         try:
