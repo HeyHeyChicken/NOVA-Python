@@ -16,7 +16,6 @@ class ModuleManager:
             "print-color": "",
             "vosk": "",
             "sounddevice": "",
-            "libportaudio2": "",
             "playsound": "1.2.2",
         }
         
