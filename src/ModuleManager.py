@@ -1,6 +1,7 @@
 import sys
 import subprocess
 import pkg_resources
+import os
 
 class ModuleManager:
     """ This class is used to check the correct installation of the modules required for the project. """
@@ -19,6 +20,8 @@ class ModuleManager:
             "playsound": "1.2.2",
             "pyobjc": ""
         }
+
+        print(os.name)
         
         installed = {pkg.key for pkg in pkg_resources.working_set}
         for package in packages:
