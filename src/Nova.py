@@ -42,9 +42,11 @@ class Nova:
         #endregion
         
         self.print("Welcome to NOVA!")
+        sounddevice.query_devices('')
         try:
             deviceInfo = sounddevice.query_devices('input')
-        except:
+        except Exception as e:
+            self.print(e, "red")
             self.print("Audio input not found.", "red")
             return
 
