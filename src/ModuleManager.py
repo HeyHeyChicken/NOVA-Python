@@ -15,6 +15,7 @@ class ModuleManager:
         packages: dict[str, str] = {
             "print-color": "",
             "vosk": "",
+            "sounddevice": "",
             "playsound": "1.2.2",
         }
         
@@ -30,5 +31,5 @@ class ModuleManager:
                 packageVersion: str = packages[package]
                 if packageVersion != "":
                     packageName += "==" + packageVersion
-                subprocess.check_call([sys.executable, '-m', 'pip', 'install', packageName], stdout=subprocess.DEVNULL)
+                subprocess.check_call([sys.executable, '-m', 'pip', 'install', packageName, '--no-warn-script-location'], stdout=subprocess.DEVNULL)
                 print(f"        Module {package!r} is now installed.")
