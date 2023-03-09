@@ -30,6 +30,7 @@ class Nova:
         self.device = None
         self.tts = TTS()
         self.naturalLanguageProcessor = Processor()
+        self.haveToProcess: bool = True
 
         #region Plugins loading
 
@@ -49,14 +50,22 @@ class Nova:
         self.print("Welcome to NOVA!")
         try:
             deviceInfo = sounddevice.query_devices(settings["audio"]["input"])
-        except Exception as e:
-            self.print(e, "red")
-            self.print("Audio input not found.", "red")
+        except:
+            self.print("No input device matching '" + settings["audio"]["input"] + "'.", "red")
+            self.print("Here is the list of available devices:", "red")
+            print(sounddevice.query_devices())
+            self.print("Please define in '/settings.json file > audio > input' the device you want to use as microphone.", "red")
             return
 
         self.samplerate = int(deviceInfo['default_samplerate'])
 
         self.print("Speech to text model loading...")
+        modelFolderPath: str = os.path.join(rootPath, "src", "models", "model")
+        if not os.path.exists(modelFolderPath):
+            self.print("In order to understand what you are telling it, NOVA (using Vosk) needs a model.", "red")
+            self.print("You can download one of them here : https://alphacephei.com/vosk/models", "red")
+            self.print("After downloading, unzip the contents of your model's archive here : /src/models/model/*", "red")
+            return
         self.model = vosk.Model("src/models/model")
         self.print("Speech to text model loaded.")
 
@@ -80,7 +89,8 @@ class Nova:
         """ This function is triggered when the user speaks. """
         if status:
             print(status, file=sys.stderr)
-        self.q.put(bytes(indata))
+        if self.haveToProcess:
+            self.q.put(bytes(indata))
 
     def processTextFromUser(self, text: str):
         """ This function is triggered when the user has finished his sentence. """
@@ -93,7 +103,11 @@ class Nova:
 
     def TTS(self, message):
         self.print("-> " + message)
-        self.tts.TTS(message)
+        self.haveToProcess = False
+        self.tts.TTS(message, self.TTSFinish)
+
+    def TTSFinish(self):
+        self.haveToProcess = True
 
     def print(self, message, tagColor: str = "green"):
         print(message, tag='NOVA', tag_color=tagColor, color='white')

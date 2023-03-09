@@ -9,7 +9,7 @@ import urllib.parse
 class TTS:
     url: str = "http://192.168.1.12/api"
 
-    def TTS(self, message: str):
+    def TTS(self, message: str, callback):
         folder: str = os.path.join(os.path.dirname(__file__), "mp3")
         
         # If the "mp3" folder exists, delete its contents
@@ -35,3 +35,4 @@ class TTS:
 
         # We play the audio file.
         playsound(localFileName)
+        callback()

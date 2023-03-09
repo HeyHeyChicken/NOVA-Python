@@ -3,3 +3,4 @@ __pycache__
 /src/mp3/*
 src/models/model/*
 src/models/*.zip
+.DS_Store
