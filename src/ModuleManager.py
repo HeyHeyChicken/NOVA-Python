@@ -56,7 +56,6 @@ class ModuleManager:
             "playsound": "1.2.2",
         }
         
-        installed = {pkg.key for pkg in pkg_resources.working_set}
         for package in packages:
             self.checkPackage(package, packages[package])
         if self.settings["os"] == "mac":

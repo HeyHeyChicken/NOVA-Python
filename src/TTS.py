@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 from pathlib import Path
 import os
-import playsound
 from playsound import playsound
 import datetime
 import urllib.parse
