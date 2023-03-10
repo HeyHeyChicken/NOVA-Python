@@ -32,6 +32,9 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.haveToProcess: bool = True
 
+        settingsPath = os.path.join(rootPath, "settings.json")
+        self.settings = json.load(open(settingsPath, encoding='utf-8'))
+
         #region Plugins loading
 
         DateDayTimeYear(self.naturalLanguageProcessor, self.TTS)
@@ -44,14 +47,11 @@ class Nova:
 
         #endregion
         
-        settingsPath = os.path.join(rootPath, "settings.json")
-        settings = json.load(open(settingsPath, encoding='utf-8'))
-        
         self.print("Welcome to NOVA!")
         try:
-            deviceInfo = sounddevice.query_devices(settings["audio"]["input"])
+            deviceInfo = sounddevice.query_devices(self.settings["audio"]["input"])
         except:
-            self.print("No input device matching '" + settings["audio"]["input"] + "'.", "red")
+            self.print("No input device matching '" + self.settings["audio"]["input"] + "'.", "red")
             self.print("Here is the list of available devices:", "red")
             print(sounddevice.query_devices())
             self.print("Please define in '/settings.json file > audio > input' the device you want to use as microphone.", "red")
