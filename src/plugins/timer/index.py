@@ -1,6 +1,7 @@
 import os
 from playsound import playsound
 from events import Events
+from threading import Thread
 from src.SetTimeOut import SetTimeOut
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
@@ -22,19 +23,22 @@ class Timer:
         self.tts = tts
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 
-        processor.addAction("timer.minutes", self.timerMinutes)
-        processor.addAction("timer.stop", self.timerStop)
+        processor.addAction("timer.minutes", self.__timerMinutes)
+        processor.addAction("timer.stop", self.__timerStop)
     
-    def timerRing(self, args: list[any]):
+    def __timerRing(self, args: list[any]):
         alarmPath: str = os.path.join(os.path.dirname(__file__), "mp3", "alarm.mp3")
+        Thread(target=self.__timerRingLoop, args=(args,alarmPath)).start()
+    
+    def __timerRingLoop(self, args: list[any], alarmPath: str):
         while(self.alarms[args[0]] == False):
             playsound(alarmPath)
     
-    def timerStop(self, intent: Intent, result: ProcessorResult):
+    def __timerStop(self, intent: Intent, result: ProcessorResult):
         for index, alarm in enumerate(self.alarms):
             self.alarms[index] = True
 
-    def timerMinutes(self, intent: Intent, result: ProcessorResult):
+    def __timerMinutes(self, intent: Intent, result: ProcessorResult):
         minutesString: str = intent.variables['minutes']
         if minutesString in self.integers:
             minutesInt: int = self.integers.index(minutesString)
@@ -47,7 +51,7 @@ class Timer:
                 index = len(self.alarms)
                 self.alarms.append(False)
 
-            SetTimeOut(self.timerRing, minutesInt * 60 * 1000, [index])
+            SetTimeOut(self.__timerRing, minutesInt * 60 * 1000, [index])
 
             intent.variables["minutes"] = intent.variables['minutes']
             self.tts(intent.answer())
