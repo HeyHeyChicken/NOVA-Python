@@ -1,6 +1,6 @@
 import os
 import datetime
-
+from events import Events
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
@@ -9,7 +9,7 @@ class DateDayTimeYear:
     weekDays: list[str] = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
     months: list[str] = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
-    def __init__(self, processor: Processor, tts):
+    def __init__(self, processor: Processor, tts, events: Events):
         self.tts = tts
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 

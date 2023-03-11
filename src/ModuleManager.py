@@ -54,6 +54,9 @@ class ModuleManager:
             "vosk": "",
             "sounddevice": "",
             "playsound": "1.2.2",
+            "pvporcupine": "",
+            "pyaudio": "",
+            "events": ""
         }
         
         for package in packages:

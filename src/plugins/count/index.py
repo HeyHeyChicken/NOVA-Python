@@ -1,10 +1,11 @@
 import os
+from events import Events
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 
 class Count:
-    def __init__(self, processor: Processor, tts):
+    def __init__(self, processor: Processor, tts, events: Events):
         self.tts = tts
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 

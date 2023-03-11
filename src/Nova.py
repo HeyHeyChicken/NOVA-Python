@@ -1,9 +1,14 @@
 import sounddevice
 import vosk
+from vosk import SetLogLevel
 import queue
 import json
 import sys
 import os
+import struct
+import pyaudio
+from events import Events
+import pvporcupine
 from print_color import print
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
@@ -11,6 +16,7 @@ from src.TTS import TTS
 
 #region Plugins imports
 
+from src.plugins.timer.index import Timer
 from src.plugins.chatbot.index import ChatBot
 from src.plugins.datedaytimeyear.index import DateDayTimeYear
 from src.plugins.deviceipaddress.index import DeviceIPAddress
@@ -22,6 +28,9 @@ from src.plugins.random.index import Random
 #endregion
 
 class Nova:        
+    def get_next_audio_frame(self):
+        pass
+    
     def __init__(self, rootPath: str):
         self.model = None
         self.samplerate = None
@@ -30,20 +39,44 @@ class Nova:
         self.device = None
         self.tts = TTS()
         self.naturalLanguageProcessor = Processor()
-        self.haveToProcess: bool = True
+        self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
+        self.events = Events()
+        #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
 
+        if self.settings["porcupine"]["key"] == "":
+            self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
+            self.print("You can get one for free from Picovoice Console (https://console.picovoice.ai/)", "red")
+            return
+
+        porcupinePath: str = os.path.join(rootPath, "src", "porcupine")
+        self.porcupine = pvporcupine.create(
+            access_key=self.settings["porcupine"]["key"],
+            keyword_paths=[os.path.join(porcupinePath, "Ok-NOVA_fr_mac_v2_1_0.ppn")],
+            model_path=os.path.join(porcupinePath, "porcupine_params_fr.pv")
+        )
+
+        pyAudio = pyaudio.PyAudio()
+        audioStream = pyAudio.open(
+            rate = self.porcupine.sample_rate,
+            channels = 1,
+            format = pyaudio.paInt16,
+            input = True,
+            frames_per_buffer = self.porcupine.frame_length
+        )
+
         #region Plugins loading
 
-        DateDayTimeYear(self.naturalLanguageProcessor, self.TTS)
-        MediaStack(self.naturalLanguageProcessor, self.TTS)
-        ChatBot(self.naturalLanguageProcessor, self.TTS)
-        DeviceIPAddress(self.naturalLanguageProcessor, self.TTS)
-        Random(self.naturalLanguageProcessor, self.TTS)
-        Count(self.naturalLanguageProcessor, self.TTS)
-        HomePodSounds(self.naturalLanguageProcessor, self.TTS)
+        DateDayTimeYear(self.naturalLanguageProcessor, self.TTS, self.events)
+        MediaStack(self.naturalLanguageProcessor, self.TTS, self.events)
+        ChatBot(self.naturalLanguageProcessor, self.TTS, self.events)
+        DeviceIPAddress(self.naturalLanguageProcessor, self.TTS, self.events)
+        Random(self.naturalLanguageProcessor, self.TTS, self.events)
+        Count(self.naturalLanguageProcessor, self.TTS, self.events)
+        Timer(self.naturalLanguageProcessor, self.TTS, self.events)
+        HomePodSounds(self.naturalLanguageProcessor, self.TTS, self.events)
 
         #endregion
         
@@ -66,30 +99,40 @@ class Nova:
             self.print("You can download one of them here : https://alphacephei.com/vosk/models", "red")
             self.print("After downloading, unzip the contents of your model's archive here : /src/models/model/*", "red")
             return
+        SetLogLevel(-1)
         self.model = vosk.Model("src/models/model")
         self.print("Speech to text model loaded.")
 
-        with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = 1024, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
+        with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
             print('Press Ctrl+C to stop the recording')
             print('#' * 80)
 
             rec = vosk.KaldiRecognizer(self.model, self.samplerate)
             while True:
-                data = self.q.get()
-                if rec.AcceptWaveform(data):
-                    r = eval(rec.Result())
-                    t = r["text"]
-                    if t:
-                        self.processTextFromUser(t)
-                        if self.dump_fn is not None and len(t) > 5:
-                            self.dump_fn.write(t+'\n')
+                if self.microMode == 1:
+                    pcm = audioStream.read(self.porcupine.frame_length, exception_on_overflow = False)
+                    pcm = struct.unpack_from("h" * self.porcupine.frame_length, pcm)
+                    keyword_index = self.porcupine.process(pcm)
+                    if keyword_index >= 0:
+                        self.events.onTrigger()
+                        self.microMode = 2
+
+                if self.microMode == 2:
+                    data = self.q.get()
+                    if rec.AcceptWaveform(data):
+                        r = eval(rec.Result())
+                        t = r["text"]
+                        if t:
+                            self.processTextFromUser(t)
+                            if self.dump_fn is not None and len(t) > 5:
+                                self.dump_fn.write(t+'\n')
 
     def callback(self, indata, frames, time, status):
         """ This function is triggered when the user speaks. """
         if status:
             print(status, file=sys.stderr)
-        if self.haveToProcess:
+        if self.microMode == 2:
             self.q.put(bytes(indata))
 
     def processTextFromUser(self, text: str):
@@ -97,17 +140,18 @@ class Nova:
         self.print("<- " + text, "white")
 
         back: ProcessorResult = self.naturalLanguageProcessor.process(text)
+        self.microMode = 1
         if back.intent != "none":
             if back.answer != None:
+                self.microMode = 0
                 self.TTS(back.answer)
 
     def TTS(self, message):
         self.print("-> " + message)
-        self.haveToProcess = False
         self.tts.TTS(message, self.TTSFinish)
 
     def TTSFinish(self):
-        self.haveToProcess = True
+        self.microMode = 1
 
     def print(self, message, tagColor: str = "green"):
         print(message, tag='NOVA', tag_color=tagColor, color='white')

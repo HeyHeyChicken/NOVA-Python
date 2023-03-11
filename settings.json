@@ -2,5 +2,8 @@
     "audio": {
         "input": "input"
     },
-    "os": ""
+    "os": "",
+    "porcupine": {
+        "key": ""
+    }
 }
