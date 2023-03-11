@@ -13,6 +13,11 @@ class HomePodSounds:
         processor.addAction("none", self.none)
 
         events.onTrigger += self.trigger
+        events.onBooted += self.booted
+
+    def booted(self):
+        bootPath: str = os.path.join(os.path.dirname(__file__), "mp3", "boot.mp3")
+        playsound(bootPath)
 
     def trigger(self):
         listenPath: str = os.path.join(os.path.dirname(__file__), "mp3", "listen.mp3")

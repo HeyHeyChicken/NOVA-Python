@@ -5,6 +5,7 @@ import queue
 import json
 import sys
 import os
+from threading import Thread
 import struct
 import pyaudio
 from events import Events
@@ -101,6 +102,8 @@ class Nova:
         self.model = vosk.Model("src/models/model")
         self.print("Speech to text model loaded.")
 
+        Thread(target=self.events.onBooted).start()
+
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
             print('Press Ctrl+C to stop the recording')
@@ -113,7 +116,7 @@ class Nova:
                     pcm = struct.unpack_from("h" * self.porcupine.frame_length, pcm)
                     keyword_index = self.porcupine.process(pcm)
                     if keyword_index >= 0:
-                        self.events.onTrigger()
+                        Thread(target=self.events.onTrigger).start()
                         self.microMode = 2
 
                 if self.microMode == 2:
