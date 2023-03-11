@@ -66,6 +66,7 @@ class Nova:
             input = True,
             frames_per_buffer = self.porcupine.frame_length
         )
+        info = pyAudio.get_default_input_device_info()
 
         #region Plugins loading
 
@@ -82,12 +83,9 @@ class Nova:
         
         self.print("Welcome to NOVA!")
         try:
-            deviceInfo = sounddevice.query_devices(self.settings["audio"]["input"])
+            deviceInfo = sounddevice.query_devices(info['name'])
         except:
-            self.print("No input device matching '" + self.settings["audio"]["input"] + "'.", "red")
-            self.print("Here is the list of available devices:", "red")
-            print(sounddevice.query_devices())
-            self.print("Please define in '/settings.json file > audio > input' the device you want to use as microphone.", "red")
+            self.print("No input device found.", "red")
             return
 
         self.samplerate = int(deviceInfo['default_samplerate'])
