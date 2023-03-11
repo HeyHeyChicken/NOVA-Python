@@ -55,7 +55,7 @@ class Nova:
         porcupinePath: str = os.path.join(rootPath, "src", "porcupine")
         self.porcupine = pvporcupine.create(
             access_key=self.settings["porcupine"]["key"],
-            keyword_paths=[os.path.join(porcupinePath, "Ok-NOVA_fr_mac_v2_1_0.ppn")],
+            keyword_paths=[os.path.join(porcupinePath, "WakeWord_Ok-NOVA_fr_" + self.settings["os"] + ".ppn")],
             model_path=os.path.join(porcupinePath, "porcupine_params_fr.pv")
         )
 
