@@ -64,8 +64,10 @@ class ModuleManager:
         if self.settings["os"] == "mac":
             self.checkPackage("pyobjc", "")
             self.checkPackage("osascript", "")
-        if self.settings["os"] == "raspberry":
+        elif self.settings["os"] == "raspberry":
             self.checkPackage("pyalsaaudio", "")
+        elif self.settings["os"] == "nt": # Windows
+            self.checkPackage("pycaw", "")
 
     def checkPackage(self, package: str, version: str):
         installed = {pkg.key for pkg in pkg_resources.working_set}
