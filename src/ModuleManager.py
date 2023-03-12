@@ -57,13 +57,15 @@ class ModuleManager:
             "pvporcupine": "",
             "pyaudio": "",
             "events": "",
-            "osascript": ""
         }
         
         for package in packages:
             self.checkPackage(package, packages[package])
         if self.settings["os"] == "mac":
             self.checkPackage("pyobjc", "")
+            self.checkPackage("osascript", "")
+        if self.settings["os"] == "raspberry":
+            self.checkPackage("python-alsaaudio", "")
 
     def checkPackage(self, package: str, version: str):
         installed = {pkg.key for pkg in pkg_resources.working_set}

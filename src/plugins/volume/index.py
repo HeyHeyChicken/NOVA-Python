@@ -3,7 +3,6 @@ from events import Events
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
-import osascript
 import time
 
 class Volume:
@@ -21,9 +20,11 @@ class Volume:
         "cent"
     ]
 
-    def __init__(self, processor: Processor, tts, events: Events):
+    def __init__(self, processor: Processor, tts, events: Events, settings):
         self.tts = tts
+        self.settings = settings
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
+        print(os.path.dirname(__file__))
 
         processor.addAction("volume.percent", self.__volumePercent)
 
@@ -31,7 +32,14 @@ class Volume:
         percentString: str = intent.variables['percent']
         if percentString in self.integers:
             percentInt: int = self.integers.index(percentString)
-            osascript.osascript("set volume output volume " + str(percentInt))
+
+            if self.settings["os"] == "mac":
+                import osascript
+                osascript.osascript("set volume output volume " + str(percentInt))
+            elif self.settings["os"] == "raspberry":
+                import alsaaudio
+                mixer = alsaaudio.Mixer()
+                mixer.setvolume(percentInt)
 
             intent.variables["percent"] = intent.variables['percent']
             self.tts(intent.answer())

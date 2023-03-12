@@ -23,7 +23,7 @@ class Timer:
         "cent"
     ]
 
-    def __init__(self, processor: Processor, tts, events: Events):
+    def __init__(self, processor: Processor, tts, events: Events, settings):
         self.tts = tts
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 

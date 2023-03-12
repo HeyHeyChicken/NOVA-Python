@@ -72,15 +72,15 @@ class Nova:
 
         #region Plugins loading
 
-        DateDayTimeYear(self.naturalLanguageProcessor, self.TTS, self.events)
-        MediaStack(self.naturalLanguageProcessor, self.TTS, self.events)
-        ChatBot(self.naturalLanguageProcessor, self.TTS, self.events)
-        DeviceIPAddress(self.naturalLanguageProcessor, self.TTS, self.events)
-        Random(self.naturalLanguageProcessor, self.TTS, self.events)
-        Count(self.naturalLanguageProcessor, self.TTS, self.events)
-        Timer(self.naturalLanguageProcessor, self.TTS, self.events)
-        HomePodSounds(self.naturalLanguageProcessor, self.TTS, self.events)
-        Volume(self.naturalLanguageProcessor, self.TTS, self.events)
+        DateDayTimeYear(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        MediaStack(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        ChatBot(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        DeviceIPAddress(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        Random(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        Count(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        Timer(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        HomePodSounds(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
+        Volume(self.naturalLanguageProcessor, self.TTS, self.events, self.settings)
 
         #endregion
 

@@ -8,7 +8,7 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 
 class HomePodSounds:
 
-    def __init__(self, processor: Processor, tts, events: Events):
+    def __init__(self, processor: Processor, tts, events: Events, settings):
         self.tts = tts
 
         processor.addAction("none", self.__none)
