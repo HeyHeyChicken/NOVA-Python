@@ -25,6 +25,7 @@ from src.plugins.mediastack.index import MediaStack
 from src.plugins.count.index import Count
 from src.plugins.homepodsounds.index import HomePodSounds
 from src.plugins.random.index import Random
+from src.plugins.volume.index import Volume
 
 #endregion
 
@@ -79,8 +80,11 @@ class Nova:
         Count(self.naturalLanguageProcessor, self.TTS, self.events)
         Timer(self.naturalLanguageProcessor, self.TTS, self.events)
         HomePodSounds(self.naturalLanguageProcessor, self.TTS, self.events)
+        Volume(self.naturalLanguageProcessor, self.TTS, self.events)
 
         #endregion
+
+        ProcessorResult = self.naturalLanguageProcessor.process("volume du son à quarante-deux pour cent")
         
         self.print("Welcome to NOVA!")
         try:

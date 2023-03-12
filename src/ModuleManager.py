@@ -56,7 +56,8 @@ class ModuleManager:
             "playsound": "1.2.2",
             "pvporcupine": "",
             "pyaudio": "",
-            "events": ""
+            "events": "",
+            "pynput": ""
         }
         
         for package in packages:

@@ -1,0 +1,11 @@
+[
+  {
+    "intent": "volume.percent",
+    "utterances": [
+      "Volume du son à {percent} pour cent"
+    ],
+    "answers": [
+      "Ok, %percent% pourcents."
+    ]
+  }
+]
