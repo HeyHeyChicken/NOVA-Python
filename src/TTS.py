@@ -1,3 +1,4 @@
+from threading import Thread
 from urllib.request import urlopen
 from pathlib import Path
 import os
@@ -33,5 +34,8 @@ class TTS:
             output.write(mp3file.read())
 
         # We play the audio file.
-        playsound(localFileName)
+        Thread(target=self.__playMP3, args=([],localFileName, callback)).start()
+
+    def __playMP3(self, nothing: list[any], mp3Path: str, callback):
+        playsound(mp3Path)
         callback()

@@ -57,7 +57,7 @@ class ModuleManager:
             "pvporcupine": "",
             "pyaudio": "",
             "events": "",
-            "pynput": ""
+            "osascript": ""
         }
         
         for package in packages:

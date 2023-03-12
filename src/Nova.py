@@ -84,7 +84,7 @@ class Nova:
 
         #endregion
 
-        ProcessorResult = self.naturalLanguageProcessor.process("volume du son à quarante-deux pour cent")
+        # ProcessorResult = self.naturalLanguageProcessor.process("volume du son à dix pour cent")
         
         self.print("Welcome to NOVA!")
         try:

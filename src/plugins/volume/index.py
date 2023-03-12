@@ -3,7 +3,7 @@ from events import Events
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
-from pynput.keyboard import Key,Controller
+import osascript
 import time
 
 class Volume:
@@ -31,20 +31,8 @@ class Volume:
         percentString: str = intent.variables['percent']
         if percentString in self.integers:
             percentInt: int = self.integers.index(percentString)
-            
-            print(percentInt)
-            self.__setVolumePercent(10)
+            osascript.osascript("set volume output volume " + str(percentInt))
 
-    def __setVolumePercent(self, percent: int):
-        keyboard = Controller()
-        while True:
-            for i in range(10):
-                keyboard.press(Key.media_volume_up)
-                keyboard.release(Key.media_volume_up)
-                time.sleep(0.1)
-            for i in range(10):
-                keyboard.press(Key.media_volume_down)
-                keyboard.release(Key.media_volume_down)
-                time.sleep(0.1)
-            time.sleep(2) 
+            intent.variables["percent"] = intent.variables['percent']
+            self.tts(intent.answer())
         
