@@ -69,7 +69,6 @@ class Nova:
             frames_per_buffer = self.porcupine.frame_length
         )
         info = pyAudio.get_default_input_device_info()
-        print(info)
 
         #region Plugins loading
 
@@ -88,7 +87,6 @@ class Nova:
         self.print("Welcome to NOVA!")
         try:
             deviceInfo = sounddevice.query_devices(info['name'])
-            print(deviceInfo)
         except:
             self.print("No input device found.", "red")
             return
