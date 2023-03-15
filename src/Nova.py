@@ -63,7 +63,7 @@ class Nova:
         pyAudio = pyaudio.PyAudio()
         audioStream = pyAudio.open(
             rate = self.porcupine.sample_rate,
-            channels = 0,
+            channels = 1,
             format = pyaudio.paInt16,
             input = True,
             frames_per_buffer = self.porcupine.frame_length
