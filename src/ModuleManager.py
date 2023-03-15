@@ -81,5 +81,5 @@ class ModuleManager:
             packageVersion: str = version
             if packageVersion != "":
                 packageName += "==" + packageVersion
-            subprocess.check_call([sys.executable, '-m', 'pip', 'install', packageName, '--no-warn-script-location'], stdout=subprocess.DEVNULL)
+            subprocess.check_call([sys.executable, '-m', 'pip3', 'install', packageName, '--no-warn-script-location'], stdout=subprocess.DEVNULL)
             print(f"        Module {package!r} is now installed.")
