@@ -24,7 +24,6 @@ class Volume:
         self.tts = tts
         self.settings = settings
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
-        print(os.path.dirname(__file__))
 
         processor.addAction("volume.percent", self.__volumePercent)
 
