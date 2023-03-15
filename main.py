@@ -10,4 +10,5 @@ moduleManager = ModuleManager(rootPath)
 #nova = Nova(rootPath)
 
 bootPath: str = os.path.join(rootPath, "src", "plugins", "homepodsounds", "mp3", "boot.mp3")
+print(bootPath)
 playsound(bootPath)
