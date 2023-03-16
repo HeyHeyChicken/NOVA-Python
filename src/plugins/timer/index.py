@@ -8,8 +8,8 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.MP3 import MP3
 
 class Timer:
-    alarms: list[bool] = []
-    integers: list[str] = [
+    alarms: bool() = []
+    integers: str() = [
         "zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf",
         "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf",
         "vingt", "vingt et une", "vingt-deux", "vingt-trois", "vingt-quatre", "vingt-cinq", "vingt-six", "vingt-sept", "vingt-huit", "vingt-neuf",
@@ -31,11 +31,11 @@ class Timer:
         processor.addAction("timer.minutes", self.__timerMinutes)
         processor.addAction("timer.stop", self.__timerStop)
     
-    def __timerRing(self, args: list[any]):
+    def __timerRing(self, args):
         alarmPath: str = os.path.join(os.path.dirname(__file__), "mp3", "alarm.mp3")
         Thread(target=self.__timerRingLoop, args=(args,alarmPath)).start()
     
-    def __timerRingLoop(self, args: list[any], alarmPath: str):
+    def __timerRingLoop(self, args, alarmPath: str):
         while(self.alarms[args[0]] == False):
             self.mp3(alarmPath)
     
