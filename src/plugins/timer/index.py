@@ -37,7 +37,7 @@ class Timer:
     
     def __timerRingLoop(self, args, alarmPath: str):
         while(self.alarms[args[0]] == False):
-            self.mp3(alarmPath)
+            self.mp3.play(alarmPath)
     
     def __timerStop(self, intent: Intent, result: ProcessorResult):
         for index, alarm in enumerate(self.alarms):
