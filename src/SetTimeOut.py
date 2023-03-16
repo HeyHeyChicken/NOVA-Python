@@ -1,7 +1,7 @@
 from threading import Thread
 
 class SetTimeOut:
-      def __init__(self,func:"function",timing:"miliseconds", args: list[any] = []):
+      def __init__(self,func:"function",timing:"miliseconds", args = []):
           self.func=func
           self.timing=timing*2000
           self.args=args
