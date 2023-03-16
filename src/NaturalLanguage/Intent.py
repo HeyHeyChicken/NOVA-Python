@@ -10,10 +10,10 @@ class Intent:
         self.actions = []
         self.variables = {}
 
-    def addDocuments(self, utterances: list[str]):
+    def addDocuments(self, utterances: str()):
         self.documents = self.documents + utterances
 
-    def addAnswers(self, answers: list[str]):
+    def addAnswers(self, answers: str()):
         self.answers = self.answers + answers
 
     def addActions(self, actions):
