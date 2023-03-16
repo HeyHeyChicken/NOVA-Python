@@ -23,7 +23,7 @@ class Processor:
 
     # Load
     # This function loads a corpus.
-    def loadCorpus(self, corpus: list[Corpus]):
+    def loadCorpus(self, corpus): #list[Corpus]
         for c in corpus:
             if c.utterances is not None:
                 self.addDocuments(c.intent, c.utterances)
@@ -42,7 +42,7 @@ class Processor:
         self.addDocuments(intentName, [utterance])
 
     # This function adds ways to call an action.
-    def addDocuments(self, intentName: str, utterances: list[str]):
+    def addDocuments(self, intentName: str, utterances: str()):
         self.__checkIntentExistence(intentName)
         self.intents[intentName].addDocuments(utterances)
 
@@ -55,14 +55,14 @@ class Processor:
         self.addAnswers(intentName, [answer])
 
     # This function adds responses to an action.
-    def addAnswers(self, intentName: str, answers: list[str]):
+    def addAnswers(self, intentName: str, answers: str()):
         self.__checkIntentExistence(intentName)
         self.intents[intentName].addAnswers(answers)
 
     #endregion
     
     # Errors
-    def addErrors(self, intentName: str, errorsName: str, errors: list[str]):
+    def addErrors(self, intentName: str, errorsName: str, errors: str()):
         self.__checkIntentExistence(intentName)
         self.intents[intentName].addErrors(errorsName, errors)
 
@@ -143,7 +143,7 @@ class Processor:
             self.intents[intentName] = Intent(intentName)
 
     # This function is an essential loop of the "process" function.
-    def __process(self, sentence: str, splitedSay: list[str], asc: bool = True):
+    def __process(self, sentence: str, splitedSay: str(), asc: bool = True):
         sentence = sentence.lower()
         splittedSentense = sentence.split(" ")
 
