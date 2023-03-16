@@ -2,14 +2,15 @@ from threading import Thread
 from urllib.request import urlopen
 from pathlib import Path
 import os
-from playsound import playsound
 import datetime
 import urllib.parse
+from src.MP3 import MP3
 
 class TTS:
     url: str = "http://192.168.1.12/api"
 
-    def TTS(self, message: str, callback):
+    def TTS(self, mp3: MP3, message: str, callback):
+        self.mp3 = mp3
         folder: str = os.path.join(os.path.dirname(__file__), "mp3")
         
         # If the "mp3" folder exists, delete its contents
@@ -37,5 +38,5 @@ class TTS:
         Thread(target=self.__playMP3, args=([],localFileName, callback)).start()
 
     def __playMP3(self, nothing: list[any], mp3Path: str, callback):
-        playsound(mp3Path)
+        self.mp3(mp3Path)
         callback()

@@ -53,10 +53,11 @@ class ModuleManager:
             "print-color": "",
             "vosk": "",
             "sounddevice": "",
-            "playsound": "1.2.2",
+            #"playsound": "1.2.2",
             "pvporcupine": "",
             "pyaudio": "",
             "events": "",
+            "pygame":""
         }
         
         for package in packages:
@@ -66,6 +67,7 @@ class ModuleManager:
             self.checkPackage("osascript", "")
         elif self.settings["os"] == "raspberry":
             self.checkPackage("pyalsaaudio", "")
+            self.checkPackage("pygame", "")
         elif self.settings["os"] == "nt": # Windows
             self.checkPackage("pycaw", "")
 

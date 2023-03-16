@@ -1,11 +1,11 @@
 import os
-from playsound import playsound
 from events import Events
 from threading import Thread
 from src.SetTimeOut import SetTimeOut
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
+from src.MP3 import MP3
 
 class Timer:
     alarms: list[bool] = []
@@ -23,8 +23,9 @@ class Timer:
         "cent"
     ]
 
-    def __init__(self, processor: Processor, tts, events: Events, settings):
+    def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.tts = tts
+        self.mp3 = mp3
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 
         processor.addAction("timer.minutes", self.__timerMinutes)
@@ -36,7 +37,7 @@ class Timer:
     
     def __timerRingLoop(self, args: list[any], alarmPath: str):
         while(self.alarms[args[0]] == False):
-            playsound(alarmPath)
+            self.mp3(alarmPath)
     
     def __timerStop(self, intent: Intent, result: ProcessorResult):
         for index, alarm in enumerate(self.alarms):

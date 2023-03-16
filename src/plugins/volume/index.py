@@ -4,6 +4,7 @@ from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 import time
+from src.MP3 import MP3
 
 class Volume:
     integers: list[str] = [
@@ -20,7 +21,7 @@ class Volume:
         "cent"
     ]
 
-    def __init__(self, processor: Processor, tts, events: Events, settings):
+    def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.tts = tts
         self.settings = settings
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))

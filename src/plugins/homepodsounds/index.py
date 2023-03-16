@@ -1,15 +1,15 @@
 import os
 from threading import Thread
-from playsound import playsound
 from events import Events
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
+from src.MP3 import MP3
 
 class HomePodSounds:
 
-    def __init__(self, processor: Processor, tts, events: Events, settings):
-        self.tts = tts
+    def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
+        self.mp3 = mp3
 
         processor.addAction("none", self.__none)
 
@@ -17,7 +17,7 @@ class HomePodSounds:
         events.onBooted += self.__booted
 
     def __playMP3(self, nothing: list[any], mp3Path: str):
-        playsound(mp3Path)
+        self.mp3(mp3Path)
 
     def __booted(self):
         bootPath: str = os.path.join(os.path.dirname(__file__), "mp3", "boot.mp3")
