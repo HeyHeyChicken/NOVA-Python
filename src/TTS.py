@@ -15,7 +15,7 @@ class TTS:
         
         # If the "mp3" folder exists, delete its contents
         if os.path.exists(folder):
-            oldFiles: list[str] = os.listdir(folder)
+            oldFiles: str() = os.listdir(folder)
             for oldFile in oldFiles:
                 os.remove(os.path.join(folder, oldFile))
 

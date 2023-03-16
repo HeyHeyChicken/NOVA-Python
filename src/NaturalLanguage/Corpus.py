@@ -6,6 +6,6 @@ class Corpus:
             #errors: dict[str, str()] = {}
         ):
         self.intent: str = intent
-        self.utterances: list[str] = utterances
-        self.answers: list[str] = answers
+        self.utterances: str() = utterances
+        self.answers: str() = answers
         #self.errors: list[str] = errors

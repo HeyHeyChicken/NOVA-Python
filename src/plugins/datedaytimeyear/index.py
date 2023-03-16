@@ -7,8 +7,8 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.MP3 import MP3
 
 class DateDayTimeYear:
-    weekDays: list[str] = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
-    months: list[str] = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+    weekDays: str() = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
+    months: str() = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
     def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.tts = tts
