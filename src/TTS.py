@@ -38,5 +38,5 @@ class TTS:
         Thread(target=self.__playMP3, args=([],localFileName, callback)).start()
 
     def __playMP3(self, nothing, mp3Path: str, callback):
-        self.mp3(mp3Path)
+        self.mp3.play(mp3Path)
         callback()
