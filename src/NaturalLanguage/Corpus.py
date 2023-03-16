@@ -3,7 +3,7 @@ class Corpus:
             self, intent: str,
             utterances: str(),
             answers: str(),
-            errors: dict(str, str()) = {}
+            errors: dict[str, str()] = {}
         ):
         self.intent: str = intent
         self.utterances: list[str] = utterances
