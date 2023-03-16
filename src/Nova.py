@@ -40,8 +40,8 @@ class Nova:
         self.q = queue.Queue()
         self.dump_fn = None
         self.device = None
-        self.tts = TTS()
         self.mp3 = MP3()
+        self.tts = TTS(self.mp3)
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
