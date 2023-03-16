@@ -9,8 +9,10 @@ from src.MP3 import MP3
 class TTS:
     url: str = "http://192.168.1.12/api"
 
-    def TTS(self, mp3: MP3, message: str, callback):
+    def __init__(self, mp3: MP3):
         self.mp3 = mp3
+
+    def TTS(self, message: str, callback):
         folder: str = os.path.join(os.path.dirname(__file__), "mp3")
         
         # If the "mp3" folder exists, delete its contents
