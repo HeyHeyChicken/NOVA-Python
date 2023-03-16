@@ -4,8 +4,8 @@ import random
 class Intent:
     def __init__(self, name: str):
         self.name: str = name
-        self.documents: list[str] = []
-        self.answers: list[str] = []
+        self.documents: str() = []
+        self.answers: str() = []
         self.errors = {}
         self.actions = []
         self.variables = {}
@@ -19,7 +19,7 @@ class Intent:
     def addActions(self, actions):
         self.actions = self.actions + actions
     
-    def addErrors(self, errorsName: str, errors: list[str]):
+    def addErrors(self, errorsName: str, errors: str()):
         if not hasattr(self.errors, errorsName):
             self.errors[errorsName] = []
         self.errors[errorsName] = self.errors[errorsName] + errors
