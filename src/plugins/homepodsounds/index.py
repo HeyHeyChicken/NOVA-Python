@@ -17,6 +17,7 @@ class HomePodSounds:
         events.onBooted += self.__booted
 
     def __playMP3(self, nothing, mp3Path: str):
+        print(mp3Path)
         self.mp3(mp3Path)
 
     def __booted(self):
