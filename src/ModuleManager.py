@@ -77,9 +77,12 @@ class ModuleManager:
         else:
             print(f"        Module {package!r} isn't installed.")
             print(f"        Installing module {package!r}...")
+            executable: str = "pip"
+            if self.settings["os"] == "raspberry":
+                executable: str = "pip3"
             packageName: str = package
             packageVersion: str = version
             if packageVersion != "":
                 packageName += "==" + packageVersion
-            subprocess.check_call([sys.executable, '-m', 'pip', 'install', packageName, '--no-warn-script-location'], stdout=subprocess.DEVNULL)
+            subprocess.check_call([sys.executable, '-m', executable, 'install', packageName, '--no-warn-script-location'], stdout=subprocess.DEVNULL)
             print(f"        Module {package!r} is now installed.")
