@@ -1,8 +1,8 @@
 class Corpus:
     def __init__(
             self, intent: str,
-            utterances: list[str],
-            answers: list[str],
+            utterances: str(),
+            answers: str(),
             #errors: dict[str, list[str]] = {}
         ):
         self.intent: str = intent
