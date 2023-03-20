@@ -138,7 +138,9 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        Thread(target=self.bootLed).start()
+        #Thread(target=self.bootLed).start()
+        Thread(target=self.myLed.booted()).start()
+        
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
