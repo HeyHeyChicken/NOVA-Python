@@ -6,3 +6,4 @@ pyaudio
 events
 pygame
 pyalsaaudio
+pyusb
