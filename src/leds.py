@@ -10,9 +10,9 @@ class Leds:
         power.on()
 
     def booted(self):
-        print("gg")
         index: int = 1
         while(index < 200):
+            print(index)
             max: int = 100
             real: int = index
             if real > max:
