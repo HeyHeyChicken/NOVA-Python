@@ -38,7 +38,7 @@ class Nova:
         pass
 
     def alert(self, index: int = 0):
-        if index >= 16:
+        if index >= 12:
             index = 0
         print(index)
         pixel_ring.set_led_color(255, 0, 0, index)
