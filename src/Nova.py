@@ -56,6 +56,7 @@ class Nova:
             self.pixelRing.set_brightness(real)
             self.pixelRing.set_color(r=255, g=255, b=255)
             time.sleep(0.1)
+            index += 1
 
     def __init__(self, rootPath: str):
         self.model = None
