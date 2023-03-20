@@ -45,14 +45,18 @@ class Nova:
         time.sleep(0.5)
         self.alert(index + 1)
 
-    def bootLed(self, index: int = 0):
-        if index > 100:
-            index = 0
-        self.pixelRing.set_brightness(index)
-        self.pixelRing.set_color(r=255, g=255, b=255)
-        time.sleep(0.1)
-        self.bootLed(index + 1)
-    
+    def bootLed(self):
+        index: int = 1
+        while(index < 200):
+            max: int = 100
+            real: int = index
+            if real > max:
+                real = max - (real - max)
+                
+            self.pixelRing.set_brightness(real)
+            self.pixelRing.set_color(r=255, g=255, b=255)
+            time.sleep(0.1)
+
     def __init__(self, rootPath: str):
         self.model = None
         self.samplerate = None
