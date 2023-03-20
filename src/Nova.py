@@ -10,7 +10,6 @@ import struct
 import pyaudio
 from events import Events
 import pvporcupine
-import time
 from print_color import print
 from src.led import LED as MYLED
 from src.NaturalLanguage.Processor import Processor
@@ -33,10 +32,7 @@ from src.plugins.volume.index import Volume
 
 #endregion
 
-class Nova:        
-    def get_next_audio_frame(self):
-        pass
-
+class Nova:
     """
     def alert(self, index: int = 0):
         if index >= 12:
