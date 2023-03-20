@@ -16,7 +16,7 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
-from src.libraries.PixelRing import PixelRing
+from src.libraries.pixel_ring.PixelRing import PixelRing
 from gpiozero import LED
 
 #region Plugins imports
@@ -56,6 +56,7 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
+        self.pixelRing = PixelRing()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
@@ -63,7 +64,7 @@ class Nova:
 
         power = LED(5)
         power.on()
-        pixel_ring.set_brightness(self.settings["led_brightness"])
+        self.pixelRing.set_brightness(self.settings["led_brightness"])
 
         Thread(target=self.alert).start()
         #pixel_ring.pixe
