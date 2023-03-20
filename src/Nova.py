@@ -48,11 +48,8 @@ class Nova:
     def bootLed(self, index: int = 0):
         if index > 100:
             index = 0
-        if index == 0:
-            self.pixelRing.set_color(r=255, g=255, b=255)
         self.pixelRing.set_brightness(index)
         self.pixelRing.set_color(r=255, g=255, b=255)
-        print(index)
         time.sleep(0.1)
         self.bootLed(index + 1)
     
