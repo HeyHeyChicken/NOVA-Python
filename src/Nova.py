@@ -40,6 +40,7 @@ class Nova:
         power = LED(5)
         power.on()
         pixel_ring.set_brightness(10)
+        pixel_ring.speak()
 
         self.model = None
         self.samplerate = None
