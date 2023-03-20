@@ -76,7 +76,7 @@ class PixelRing(object):
 
         self.dev.show()
 
-    def set_color(self, r=0, g=0, b=0, i=0):
+    def set_led_color(self, r=0, g=0, b=0, i=0):
         self.dev.set_pixel(i, r, g, b)
         self.dev.show()
 
