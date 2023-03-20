@@ -76,6 +76,10 @@ class PixelRing(object):
 
         self.dev.show()
 
+    def set_color(self, r=0, g=0, b=0, i=0):
+        self.dev.set_pixel(i, r, g, b)
+        self.dev.show()
+
     def set_color(self, rgb=None, r=0, g=0, b=0):
         if rgb:
             r, g, b = (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF
