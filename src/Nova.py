@@ -11,7 +11,7 @@ import pyaudio
 from events import Events
 import pvporcupine
 from print_color import print
-from src.led import LED as MYLED
+from src.led import LED
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
@@ -54,7 +54,7 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
-        self.myLed = MYLED()
+        self.led = LED()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
@@ -120,7 +120,7 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        Thread(target=self.myLed.booted()).start()
+        Thread(target=self.led.booted()).start()
         
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
