@@ -39,7 +39,7 @@ class Nova:
     def __init__(self, rootPath: str):
         power = LED(5)
         power.on()
-        pixel_ring.set_brightness(10)
+        pixel_ring.set_brightness(100)
         pixel_ring.speak()
 
         self.model = None
