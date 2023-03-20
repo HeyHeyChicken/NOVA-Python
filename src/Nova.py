@@ -45,8 +45,6 @@ class Nova:
     
     def __init__(self, rootPath: str):
         self.events = Events()
-        Thread(target=self.events.onBooting).start()
-
         self.model = None
         self.samplerate = None
         self.q = queue.Queue()
@@ -63,6 +61,21 @@ class Nova:
 
         power = GPIO_LED(5)
         power.on()
+
+        #region Plugins loading
+
+        DateDayTimeYear(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        MediaStack(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        ChatBot(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        DeviceIPAddress(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Random(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Count(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Timer(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        HomePodSounds(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Volume(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Led(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+
+        #endregion
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
@@ -86,20 +99,7 @@ class Nova:
         )
         info = pyAudio.get_default_input_device_info()
 
-        #region Plugins loading
-
-        DateDayTimeYear(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        MediaStack(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        ChatBot(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        DeviceIPAddress(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Random(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Count(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Timer(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        HomePodSounds(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Volume(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Led(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-
-        #endregion
+        Thread(target=self.events.onBooting).start()
         
         self.print("Welcome to NOVA!")
         try:
