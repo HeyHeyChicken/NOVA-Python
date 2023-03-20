@@ -12,11 +12,12 @@ from events import Events
 import pvporcupine
 import time
 from print_color import print
-from src.leds import Leds
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
+from src.libraries.pixel_ring.pixel_ring import PixelRing
+from gpiozero import LED
 
 #region Plugins imports
 
@@ -44,6 +45,19 @@ class Nova:
         time.sleep(0.5)
         self.alert(index + 1)
 
+    def bootLed(self):
+        index: int = 1
+        while(index < 200):
+            max: int = 100
+            real: int = index
+            if real > max:
+                real = max - (real - max)
+                
+            self.pixelRing.set_brightness(real)
+            self.pixelRing.set_color(r=255, g=255, b=255)
+            time.sleep(0.1)
+            index += 1
+
     def __init__(self, rootPath: str):
         self.model = None
         self.samplerate = None
@@ -55,12 +69,18 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
-        self.leds = Leds()
+        self.pixelRing = PixelRing()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
+
+        power = LED(5)
+        power.on()
         #self.pixelRing.set_brightness(self.settings["led_brightness"])
+
+        Thread(target=self.bootLed).start()
+        #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
@@ -119,8 +139,6 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        #Thread(target=self.leds.booted).start()
-        self.leds.booted()
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
