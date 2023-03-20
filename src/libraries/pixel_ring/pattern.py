@@ -44,7 +44,7 @@ class Echo(object):
         step = int(self.brightness / 12)
         position = int(self.brightness / 2)
         while not self.stop:
-            pixels  = [0, 0, position, self.brightness - position] * self.pixels_number
+            pixels  = [0, 0, position, self.brightness - position, 0, 0] * self.pixels_number
             self.show(pixels)
             time.sleep(0.01)
             if position <= 0:
