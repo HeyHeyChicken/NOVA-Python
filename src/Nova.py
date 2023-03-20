@@ -62,8 +62,6 @@ class Nova:
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
 
-        power = LED(5)
-        power.on()
         self.pixelRing.set_brightness(self.settings["led_brightness"])
 
         Thread(target=self.alert).start()
