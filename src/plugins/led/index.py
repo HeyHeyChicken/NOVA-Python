@@ -17,6 +17,10 @@ class Led:
         events.onBooting += self.__booting
         events.onBooted += self.__booted
         events.onTrigger += self.__trigger
+        events.onProcessed += self.__processed
+
+    def __processed(self):
+        self.pixelRing.set_brightness(0)
 
     def __trigger(self):
         self.pixelRing.set_color(r=255, g=255, b=255)
