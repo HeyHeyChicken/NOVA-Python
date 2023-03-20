@@ -25,7 +25,7 @@ class Led:
         self.pixelRing.set_brightness(100)
         print("on")
         time.sleep(1)
-        self.pixelRing.set_brightness(0)
+        self.pixelRing.off()
         print("off")
 
     def __booting(self):
