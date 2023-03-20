@@ -38,6 +38,9 @@ class Nova:
         pass
 
     def alert(self, index: int = 0):
+        if index >= 16:
+            index = 0
+        print(index)
         pixel_ring.set_led_color(255, 0, 0, index)
         time.sleep(0.5)
         self.alert(index + 1)
@@ -62,18 +65,7 @@ class Nova:
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
 
-        pixel_ring.set_led_color(255, 0, 0, 0)
-        time.sleep(0.5)
-
-        pixel_ring.set_led_color(255, 0, 0, 1)
-        time.sleep(0.5)
-
-        pixel_ring.set_led_color(255, 0, 0, 2)
-        time.sleep(0.5)
-
-        pixel_ring.set_led_color(255, 0, 0, 3)
-        time.sleep(0.5)
-        #Thread(target=self.alert).start()
+        Thread(target=self.alert).start()
         #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
