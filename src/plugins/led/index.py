@@ -19,7 +19,7 @@ class Led:
         events.onTrigger += self.__trigger
 
     def __trigger(self):
-        self.pixelRing.set_color(255, 255, 255)
+        self.pixelRing.set_color(r=255, g=255, b=255)
         self.pixelRing.set_brightness(10)
 
     def __none(self, intent: Intent, result: ProcessorResult):
