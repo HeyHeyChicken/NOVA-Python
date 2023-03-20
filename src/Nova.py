@@ -44,6 +44,8 @@ class Nova:
     """
     
     def __init__(self, rootPath: str):
+        Thread(target=self.events.onBooting).start()
+
         self.model = None
         self.samplerate = None
         self.q = queue.Queue()
@@ -120,7 +122,6 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
