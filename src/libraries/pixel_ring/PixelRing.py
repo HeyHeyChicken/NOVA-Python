@@ -9,7 +9,6 @@ except ImportError:
 from .apa102 import APA102
 from .pattern import Echo, GoogleHome
 
-
 class PixelRing(object):
     PIXELS_N = 12
 
