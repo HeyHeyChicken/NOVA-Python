@@ -19,17 +19,7 @@ class Led:
 
     def __none(self, intent: Intent, result: ProcessorResult):
         time.sleep(0.1)
-        index: int = 1
-        while(index < 200):
-            max: int = 100
-            real: int = index
-            if real > max:
-                real = max - (real - max)
-                
-            self.pixelRing.set_brightness(real)
-            self.pixelRing.set_color(r=255, g=0, b=0)
-            time.sleep(0.002)
-            index += 1
+        self.__once(255, 0, 0, 0.002)
         
     def __booting(self):
         self.booting = True
@@ -46,14 +36,16 @@ class Led:
     def __booted(self):
         time.sleep(0.6)
         self.booting = False
+        self.__once(255, 255, 255, 0.01)
+
+    def __once(self, r, g, b, sleep):
         index: int = 1
         while(index < 200):
             max: int = 100
             real: int = index
             if real > max:
                 real = max - (real - max)
-                
             self.pixelRing.set_brightness(real)
-            self.pixelRing.set_color(r=255, g=255, b=255)
-            time.sleep(0.01)
+            self.pixelRing.set_color(r=r, g=g, b=b)
+            time.sleep(sleep)
             index += 1
