@@ -44,6 +44,7 @@ class Nova:
     """
     
     def __init__(self, rootPath: str):
+        self.events = Events()
         Thread(target=self.events.onBooting).start()
 
         self.model = None
@@ -55,7 +56,6 @@ class Nova:
         self.tts = TTS(self.mp3)
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
-        self.events = Events()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
