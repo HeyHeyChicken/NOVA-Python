@@ -5,7 +5,6 @@ import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
 
 class Led:
-
     def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.pixelRing = PixelRing()
         self.booting: bool = False
