@@ -1,5 +1,5 @@
-from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import sys, os
+sys.stdout = open(os.devnull, 'w')
 
 import pygame
 
