@@ -52,7 +52,7 @@ class Nova:
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
 
-        power = LED(6)
+        power = LED(5)
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
         pixel_ring.speak()
