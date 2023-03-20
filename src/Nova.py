@@ -79,7 +79,6 @@ class Nova:
         power.on()
         #self.pixelRing.set_brightness(self.settings["led_brightness"])
 
-        Thread(target=self.bootLed).start()
         #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
@@ -139,6 +138,7 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
+        Thread(target=self.bootLed).start()
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
