@@ -39,7 +39,7 @@ I provide support for all users through [GitHub issues](//github.com/HeyHeyChick
 
 ## 💻 Compatibility
 
-NOVA has only been officially tested on Mac and Raspberry Pi 4.
+NOVA has only been officially tested Raspberry Pi 4.
 
 ## 📦 A great case
 
