@@ -1,9 +1,4 @@
-"""
-LED pattern like Echo
-"""
-
 import time
-
 
 class Echo(object):
     brightness = 24 * 8
@@ -141,5 +136,3 @@ class GoogleHome(object):
 
     def off(self):
         self.show([0] * 4 * 12)
-
-
