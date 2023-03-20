@@ -20,8 +20,8 @@ class Led:
             if index >= 12:
                 index = 0
             print(index)
-            self.pixelRing.set_led_color(255, 0, 0, index)
-            time.sleep(0.5)
+            self.pixelRing.set_led_color(255, 255, 255, index)
+            time.sleep(0.1)
             index += 1
 
     def __booted(self):
