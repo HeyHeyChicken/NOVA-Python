@@ -67,7 +67,6 @@ class ModuleManager:
             self.checkPackage("osascript", "")
         elif self.settings["os"] == "raspberry":
             self.checkPackage("pyalsaaudio", "")
-            self.checkPackage("pygame", "")
         elif self.settings["os"] == "nt": # Windows
             self.checkPackage("pycaw", "")
 

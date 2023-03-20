@@ -1,0 +1,8 @@
+print-color
+vosk
+sounddevice
+pvporcupine
+pyaudio
+events
+pygame
+pyalsaaudio
