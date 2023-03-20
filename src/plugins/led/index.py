@@ -1,12 +1,17 @@
-
+from events import Events
+from src.NaturalLanguage.Processor import Processor
+from src.MP3 import MP3
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
 
-class LED:
-    def __init__(self):
+class Led:
+
+    def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.pixelRing = PixelRing()
 
-    def booted(self):
+        events.onBooted += self.__booted
+
+    def __booted(self):
         index: int = 1
         while(index < 200):
             max: int = 100

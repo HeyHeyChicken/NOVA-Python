@@ -11,7 +11,6 @@ import pyaudio
 from events import Events
 import pvporcupine
 from print_color import print
-from src.led import LED
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
@@ -29,6 +28,7 @@ from src.plugins.count.index import Count
 from src.plugins.homepodsounds.index import HomePodSounds
 from src.plugins.random.index import Random
 from src.plugins.volume.index import Volume
+from src.plugins.led.index import Led
 
 #endregion
 
@@ -54,7 +54,6 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
-        self.led = LED()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
@@ -96,6 +95,7 @@ class Nova:
         Timer(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
         HomePodSounds(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
         Volume(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        Led(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
 
         #endregion
         
