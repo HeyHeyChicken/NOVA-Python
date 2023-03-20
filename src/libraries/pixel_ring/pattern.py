@@ -11,7 +11,6 @@ class Echo(object):
     def __init__(self, show, number=12):
         self.pixels_number = number
         self.pixels = [0] * 4 * number
-        print(self.pixels_number)
 
         if not callable(show):
             raise ValueError('show parameter is not callable')
