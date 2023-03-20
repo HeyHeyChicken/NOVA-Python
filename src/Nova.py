@@ -38,6 +38,7 @@ class Nova:
     def get_next_audio_frame(self):
         pass
 
+    """
     def alert(self, index: int = 0):
         if index >= 12:
             index = 0
@@ -45,20 +46,8 @@ class Nova:
         self.pixelRing.set_led_color(255, 0, 0, index)
         time.sleep(0.5)
         self.alert(index + 1)
-
-    def bootLed(self):
-        index: int = 1
-        while(index < 200):
-            max: int = 100
-            real: int = index
-            if real > max:
-                real = max - (real - max)
-                
-            self.pixelRing.set_brightness(real)
-            self.pixelRing.set_color(r=255, g=255, b=255)
-            time.sleep(0.01)
-            index += 1
-
+    """
+    
     def __init__(self, rootPath: str):
         self.model = None
         self.samplerate = None
@@ -138,7 +127,6 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        #Thread(target=self.bootLed).start()
         Thread(target=self.myLed.booted()).start()
         
 
