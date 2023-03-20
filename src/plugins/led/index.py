@@ -16,6 +16,11 @@ class Led:
 
         events.onBooting += self.__booting
         events.onBooted += self.__booted
+        events.onTrigger += self.__trigger
+
+    def __trigger(self):
+        self.pixelRing.set_color(255, 255, 255)
+        self.pixelRing.set_brightness(10)
 
     def __none(self, intent: Intent, result: ProcessorResult):
         time.sleep(0.1)
