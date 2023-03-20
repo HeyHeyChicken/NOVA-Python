@@ -15,7 +15,6 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
-from gpiozero import LED as GPIO_LED
 
 #region Plugins imports
 
@@ -58,9 +57,6 @@ class Nova:
 
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
-
-        power = GPIO_LED(5)
-        power.on()
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
