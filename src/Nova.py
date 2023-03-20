@@ -10,6 +10,7 @@ import struct
 import pyaudio
 from events import Events
 import pvporcupine
+import time
 from print_color import print
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
@@ -35,6 +36,12 @@ from src.plugins.volume.index import Volume
 class Nova:        
     def get_next_audio_frame(self):
         pass
+
+    def alert(self, index: int = 0):
+        pixel_ring.off()
+        pixel_ring.set_led_color(255, 0, 0, index)
+        time.sleep(0.5)
+        self.alert(index + 1)
     
     def __init__(self, rootPath: str):
         self.model = None
@@ -55,8 +62,8 @@ class Nova:
         power = LED(5)
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
-        pixel_ring.set_led_color(255, 0, 0, 0)
-        pixel_ring.off()
+
+        Thread(target=self.alert).start()
         #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
