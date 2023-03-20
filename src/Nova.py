@@ -55,7 +55,8 @@ class Nova:
         power = LED(5)
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
-        pixel_ring.speak()
+        #pixel_ring.speak()
+        pixel_ring.set_color(r=255, g=255, b=255)
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
