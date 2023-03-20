@@ -27,7 +27,7 @@ class Led:
                 
             self.pixelRing.set_brightness(real)
             self.pixelRing.set_color(r=255, g=0, b=0)
-            time.sleep(0.005)
+            time.sleep(0.001)
             index += 1
         
     def __booting(self):
