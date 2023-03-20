@@ -41,6 +41,7 @@ class Led:
             index += 1
 
     def __booted(self):
+        time.sleep(0.5)
         self.booting = False
         index: int = 1
         while(index < 200):
