@@ -18,16 +18,13 @@ class Led:
         events.onBooted += self.__booted
 
     def __none(self, intent: Intent, result: ProcessorResult):
-        Thread(target=self.__noneAsync).start()
-
-    def __noneAsync(self):
         self.pixelRing.set_color(r=255, g=0, b=0)
         self.pixelRing.set_brightness(100)
         print("on")
         time.sleep(1)
         self.pixelRing.off()
         print("off")
-
+        
     def __booting(self):
         self.booting = True
         index: int = 0
