@@ -18,12 +18,17 @@ class Led:
         events.onBooted += self.__booted
 
     def __none(self, intent: Intent, result: ProcessorResult):
-        self.pixelRing.set_color(r=255, g=0, b=0)
-        self.pixelRing.set_brightness(100)
-        print("on")
-        time.sleep(1)
-        self.pixelRing.off()
-        print("off")
+        index: int = 1
+        while(index < 200):
+            max: int = 100
+            real: int = index
+            if real > max:
+                real = max - (real - max)
+                
+            self.pixelRing.set_brightness(real)
+            self.pixelRing.set_color(r=255, g=0, b=0)
+            time.sleep(0.01)
+            index += 1
         
     def __booting(self):
         self.booting = True
