@@ -37,11 +37,6 @@ class Nova:
         pass
     
     def __init__(self, rootPath: str):
-        power = LED(5)
-        power.on()
-        pixel_ring.set_brightness(100)
-        pixel_ring.speak()
-
         self.model = None
         self.samplerate = None
         self.q = queue.Queue()
@@ -56,6 +51,9 @@ class Nova:
 
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
+
+        pixel_ring.set_brightness(self.settings["led_brightness"])
+        pixel_ring.speak()
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")

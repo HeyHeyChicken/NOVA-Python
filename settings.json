@@ -1,5 +1,6 @@
 {
     "os": "",
+    "led_brightness": 100,
     "porcupine": {
         "key": ""
     }
