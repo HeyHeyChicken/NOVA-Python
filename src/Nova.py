@@ -12,7 +12,7 @@ from events import Events
 import pvporcupine
 import time
 from print_color import print
-from src.led import LED
+from src.led import Leds
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
@@ -55,14 +55,12 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
-        self.led = LED()
+        self.leds = Leds()
         #self.haveWakeWordDetection: bool = False
 
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
         #self.pixelRing.set_brightness(self.settings["led_brightness"])
-
-        #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
@@ -121,7 +119,7 @@ class Nova:
         self.print("Speech to text model loaded.")
 
         Thread(target=self.events.onBooted).start()
-        Thread(target=self.led.booted).start()
+        Thread(target=self.leds.booted).start()
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
