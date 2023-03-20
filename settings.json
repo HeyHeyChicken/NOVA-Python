@@ -1,6 +1,6 @@
 {
     "os": "raspberry",
-    "led_brightness": 1,
+    "led_brightness": 100,
     "porcupine": {
         "key": ""
     }
