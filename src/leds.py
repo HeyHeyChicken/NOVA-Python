@@ -11,12 +11,12 @@ class Leds:
 
     def booted(self):
         index: int = 1
-        while(index < 200):
-            print(index)
+        while(index <= 200):
             max: int = 100
             real: int = index
             if real > max:
                 real = max - (real - max)
+            print(index, real)
                 
             self.pixelRing.set_brightness(real)
             self.pixelRing.set_color(r=255, g=255, b=255)
