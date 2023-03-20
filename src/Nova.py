@@ -62,7 +62,18 @@ class Nova:
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
 
-        Thread(target=self.alert).start()
+        pixel_ring.set_led_color(255, 0, 0, 0)
+        time.sleep(0.5)
+
+        pixel_ring.set_led_color(255, 0, 0, 1)
+        time.sleep(0.5)
+
+        pixel_ring.set_led_color(255, 0, 0, 2)
+        time.sleep(0.5)
+
+        pixel_ring.set_led_color(255, 0, 0, 3)
+        time.sleep(0.5)
+        #Thread(target=self.alert).start()
         #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
