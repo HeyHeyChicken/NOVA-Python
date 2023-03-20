@@ -64,9 +64,6 @@ class Nova:
         settingsPath = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
 
-        power = LED(5)
-        power.on()
-
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
             self.print("You can get one for free from Picovoice Console (https://console.picovoice.ai/)", "red")
