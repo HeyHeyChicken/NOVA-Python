@@ -160,6 +160,7 @@ class Nova:
         self.print("<- " + text, "white")
 
         back: ProcessorResult = self.naturalLanguageProcessor.process(text)
+        Thread(target=self.events.onProcessed).start()
         self.microMode = 1
         if back.intent != "none":
             if back.answer != None:
