@@ -15,6 +15,8 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
+from src.libraries.pixel_ring import pixel_ring
+from gpiozero import LED
 
 #region Plugins imports
 
@@ -35,6 +37,10 @@ class Nova:
         pass
     
     def __init__(self, rootPath: str):
+        power = LED(5)
+        power.on()
+        pixel_ring.set_brightness(10)
+
         self.model = None
         self.samplerate = None
         self.q = queue.Queue()
