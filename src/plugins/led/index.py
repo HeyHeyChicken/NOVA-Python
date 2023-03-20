@@ -1,6 +1,8 @@
 from events import Events
 from src.NaturalLanguage.Processor import Processor
 from src.MP3 import MP3
+from src.NaturalLanguage.Intent import Intent
+from src.NaturalLanguage.ProcessorResult import ProcessorResult
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
 
@@ -9,8 +11,16 @@ class Led:
         self.pixelRing = PixelRing()
         self.booting: bool = False
 
+        processor.addAction("none", self.__none)
+
         events.onBooting += self.__booting
         events.onBooted += self.__booted
+
+    def __none(self, intent: Intent, result: ProcessorResult):
+        self.pixelRing.set_color(r=255, g=0, b=0)
+        self.pixelRing.set_brightness(100)
+        time.sleep(1)
+        self.pixelRing.set_brightness(0)
 
     def __booting(self):
         self.booting = True
@@ -20,6 +30,7 @@ class Led:
                 index = 0
             self.pixelRing.set_color(r=0, g=0, b=0)
             self.pixelRing.set_led_color(255, 255, 255, index)
+            self.pixelRing.set_brightness(100)
             time.sleep(0.1)
             index += 1
 
