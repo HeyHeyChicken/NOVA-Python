@@ -55,7 +55,7 @@ class Nova:
         power = LED(5)
         power.on()
         pixel_ring.set_brightness(self.settings["led_brightness"])
-        pixel_ring.set_color(255, 0, 0, 0)
+        pixel_ring.set_led_color(255, 0, 0, 0)
         #pixel_ring.pixe
 
         if self.settings["porcupine"]["key"] == "":
