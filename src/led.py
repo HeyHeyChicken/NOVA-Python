@@ -1,17 +1,17 @@
 
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
-from gpiozero import LED
+from gpiozero import LED as GPIO_LED
 
-class Leds:
+class LED:
     def __init__(self):
         self.pixelRing = PixelRing()
-        power = LED(5)
+        power = GPIO_LED(5)
         power.on()
 
     def booted(self):
         index: int = 1
-        while(index <= 200):
+        while(index < 200):
             max: int = 100
             real: int = index
             if real > max:
@@ -19,5 +19,5 @@ class Leds:
                 
             self.pixelRing.set_brightness(real)
             self.pixelRing.set_color(r=255, g=255, b=255)
-            time.sleep(0.1)
+            time.sleep(0.01)
             index += 1
