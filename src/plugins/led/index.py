@@ -8,10 +8,24 @@ class Led:
 
     def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
         self.pixelRing = PixelRing()
+        self.booting: bool = False
 
+        events.onBooting += self.__booting
         events.onBooted += self.__booted
 
+    def __booting(self):
+        self.booting = True
+        index: int = 0
+        while(self.booting):
+            if index >= 12:
+                index = 0
+            print(index)
+            self.pixelRing.set_led_color(255, 0, 0, index)
+            time.sleep(0.5)
+            index += 1
+
     def __booted(self):
+        self.booting = False
         index: int = 1
         while(index < 200):
             max: int = 100
