@@ -16,9 +16,10 @@ class Leds:
             real: int = index
             if real > max:
                 real = max - (real - max)
-            print(index, real)
+
+            print(self.pixelRing)
                 
             self.pixelRing.set_brightness(real)
             self.pixelRing.set_color(r=255, g=255, b=255)
-            time.sleep(0.01)
+            time.sleep(0.1)
             index += 1
