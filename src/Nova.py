@@ -51,6 +51,7 @@ class Nova:
         if index == 0:
             self.pixelRing.set_color(255, 255, 255)
         self.pixelRing.set_brightness(index)
+        print(index)
         time.sleep(0.1)
         self.bootLed(index + 1)
     
@@ -73,7 +74,7 @@ class Nova:
 
         power = LED(5)
         power.on()
-        self.pixelRing.set_brightness(self.settings["led_brightness"])
+        #self.pixelRing.set_brightness(self.settings["led_brightness"])
 
         Thread(target=self.bootLed).start()
         #pixel_ring.pixe
