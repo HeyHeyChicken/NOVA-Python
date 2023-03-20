@@ -111,6 +111,7 @@ class Nova:
         self.samplerate = int(deviceInfo['default_samplerate'])
 
         self.print("Speech to text model loading...")
+        print('"', rootPath, '"')
         modelFolderPath: str = os.path.join(rootPath, "src", "models", "model")
         if not os.path.exists(modelFolderPath):
             self.print("In order to understand what you are telling it, NOVA (using Vosk) needs a model.", "red")
