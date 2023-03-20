@@ -17,7 +17,6 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
-from src.libraries.pixel_ring.pixel_ring import PixelRing
 from gpiozero import LED
 
 #region Plugins imports
@@ -59,7 +58,6 @@ class Nova:
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         self.events = Events()
-        self.pixelRing = PixelRing()
         self.myLed = MYLED()
         #self.haveWakeWordDetection: bool = False
 
@@ -68,7 +66,6 @@ class Nova:
 
         power = LED(5)
         power.on()
-        #self.pixelRing.set_brightness(self.settings["led_brightness"])
 
         if self.settings["porcupine"]["key"] == "":
             self.print("Please define in '/settings.json file > porcupine > key' the Porcupine key.", "red")
