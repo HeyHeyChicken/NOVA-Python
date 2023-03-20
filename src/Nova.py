@@ -38,7 +38,6 @@ class Nova:
         pass
 
     def alert(self, index: int = 0):
-        pixel_ring.off()
         pixel_ring.set_led_color(255, 0, 0, index)
         time.sleep(0.5)
         self.alert(index + 1)
