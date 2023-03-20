@@ -1,6 +1,7 @@
 from events import Events
 from src.NaturalLanguage.Processor import Processor
 from src.MP3 import MP3
+from threading import Thread
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 import time
@@ -17,6 +18,9 @@ class Led:
         events.onBooted += self.__booted
 
     def __none(self, intent: Intent, result: ProcessorResult):
+        Thread(target=self.__noneAsync).start()
+
+    def __noneAsync(self):
         self.pixelRing.set_color(r=255, g=0, b=0)
         self.pixelRing.set_brightness(100)
         print("on")
