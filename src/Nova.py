@@ -12,7 +12,7 @@ from events import Events
 import pvporcupine
 import time
 from print_color import print
-from led import LED
+from src.led import LED
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
