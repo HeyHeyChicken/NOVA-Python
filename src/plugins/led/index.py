@@ -19,8 +19,10 @@ class Led:
     def __none(self, intent: Intent, result: ProcessorResult):
         self.pixelRing.set_color(r=255, g=0, b=0)
         self.pixelRing.set_brightness(100)
+        print("on")
         time.sleep(1)
         self.pixelRing.set_brightness(0)
+        print("off")
 
     def __booting(self):
         self.booting = True
