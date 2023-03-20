@@ -53,7 +53,7 @@ class Nova:
         self.pixelRing.set_brightness(index)
         self.pixelRing.set_color(r=255, g=255, b=255)
         print(index)
-        time.sleep(0.2)
+        time.sleep(0.1)
         self.bootLed(index + 1)
     
     def __init__(self, rootPath: str):
