@@ -41,7 +41,7 @@ class Nova:
         if index >= 12:
             index = 0
         print(index)
-        pixel_ring.set_led_color(255, 0, 0, index)
+        self.pixelRing.set_led_color(255, 0, 0, index)
         time.sleep(0.5)
         self.alert(index + 1)
     
