@@ -17,8 +17,6 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
 from src.MP3 import MP3
-from src.libraries.pixel_ring.pixel_ring import PixelRing
-from gpiozero import LED
 
 #region Plugins imports
 

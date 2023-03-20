@@ -1,10 +1,13 @@
 
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
+from gpiozero import LED as PI_LED
 
 class LED:
     def __init__(self):
         self.pixelRing = PixelRing()
+        power = PI_LED(5)
+        power.on()
 
     def booted(self):
         index: int = 1
