@@ -1,14 +1,13 @@
 from events import Events
 from src.NaturalLanguage.Processor import Processor
-from src.MP3 import MP3
-from threading import Thread
+from src.Audio import Audio
 from src.NaturalLanguage.Intent import Intent
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
 
 class Led:
-    def __init__(self, processor: Processor, mp3: MP3, tts, events: Events, settings):
+    def __init__(self, processor: Processor, mp3: Audio, tts, events: Events, settings):
         self.pixelRing = PixelRing()
         self.booting: bool = False
 

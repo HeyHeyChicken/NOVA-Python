@@ -1,6 +1,6 @@
 __pycache__
 *.pyc
-/src/mp3/*
+/src/audio/*
 src/models/model/*
 src/models/*.zip
 .DS_Store

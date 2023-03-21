@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 import datetime
 import urllib.parse
-from src.MP3 import MP3
+from Audio import MP3
 
 class TTS:
     url: str = "http://192.168.1.12/api"
@@ -13,7 +13,7 @@ class TTS:
         self.mp3 = mp3
 
     def TTS(self, message: str, callback):
-        folder: str = os.path.join(os.path.dirname(__file__), "mp3")
+        folder: str = os.path.join(os.path.dirname(__file__), "audio")
         
         # If the "mp3" folder exists, delete its contents
         if os.path.exists(folder):
