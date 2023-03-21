@@ -38,6 +38,7 @@ class TTS:
 
         # We download the voice file from the TTS server.
         finalURL: str = self.url + "?sentence=" + urllib.parse.quote(message)
+        print(finalURL)
         mp3file = urlopen(finalURL)
         with open(localFileName,'wb') as output:
             output.write(mp3file.read())
