@@ -4,12 +4,12 @@ from pathlib import Path
 import os
 import datetime
 import urllib.parse
-from Audio import MP3
+from Audio import Audio
 
 class TTS:
     url: str = "http://192.168.1.12/api"
 
-    def __init__(self, mp3: MP3):
+    def __init__(self, mp3: Audio):
         self.mp3 = mp3
 
     def TTS(self, message: str, callback):
