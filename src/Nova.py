@@ -51,7 +51,7 @@ class Nova:
         self.dump_fn = None
         self.device = None
         self.audio = Audio()
-        self.tts = TTS(self.audio)
+        self.tts = TTS(self.audio, True)
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         #self.haveWakeWordDetection: bool = False
