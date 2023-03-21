@@ -9,8 +9,9 @@ from src.Audio import Audio
 class TTS:
     url: str = "http://192.168.1.12/api"
 
-    def __init__(self, mp3: Audio):
-        self.mp3 = mp3
+    def __init__(self, audio: Audio, mp3: bool = False):
+        self.audio: Audio = audio
+        self.mp3: bool = mp3
 
     def TTS(self, message: str, callback):
         folder: str = os.path.join(os.path.dirname(__file__), "audio")
@@ -28,7 +29,12 @@ class TTS:
         now: datetime = datetime.datetime.now()
         epoch: datetime = datetime.datetime.utcfromtimestamp(0)
         name: int = int((now - epoch).total_seconds() * 1000000)
-        localFileName: str = os.path.join(folder, str(name) + ".mp3")
+        
+        fileExtension: str = ".aiff"
+        if self.mp3:
+            fileExtension = ".mp3"
+
+        localFileName: str = os.path.join(folder, str(name) + fileExtension)
 
         # We download the voice file from the TTS server.
         finalURL: str = self.url + "?mp3=false&sentence=" + urllib.parse.quote(message)
@@ -40,5 +46,5 @@ class TTS:
         Thread(target=self.__playMP3, args=([],localFileName, callback)).start()
 
     def __playMP3(self, nothing, mp3Path: str, callback):
-        self.mp3.play(mp3Path)
+        self.audio.play(mp3Path)
         callback()
