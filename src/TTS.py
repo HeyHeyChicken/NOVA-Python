@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 import datetime
 import urllib.parse
-from Audio import Audio
+from src.Audio import Audio
 
 class TTS:
     url: str = "http://192.168.1.12/api"
