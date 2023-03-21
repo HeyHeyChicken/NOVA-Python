@@ -14,7 +14,7 @@ from print_color import print
 from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.TTS import TTS
-from src.MP3 import MP3
+from src.Audio import Audio
 from gpiozero import LED as GPIO_LED
 
 #region Plugins imports
@@ -50,8 +50,8 @@ class Nova:
         self.q = queue.Queue()
         self.dump_fn = None
         self.device = None
-        self.mp3 = MP3()
-        self.tts = TTS(self.mp3)
+        self.audio = Audio()
+        self.tts = TTS(self.audio)
         self.naturalLanguageProcessor = Processor()
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         #self.haveWakeWordDetection: bool = False
@@ -64,16 +64,16 @@ class Nova:
 
         #region Plugins loading
 
-        DateDayTimeYear(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        MediaStack(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        ChatBot(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        DeviceIPAddress(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Random(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Count(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Timer(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        HomePodSounds(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Volume(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
-        Led(self.naturalLanguageProcessor, self.mp3, self.TTS, self.events, self.settings)
+        DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        ChatBot(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        DeviceIPAddress(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        Random(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        Count(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        Timer(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        HomePodSounds(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        Volume(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        Led(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
         #endregion
 

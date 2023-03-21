@@ -5,7 +5,7 @@ import pygame
 
 sys.stdout = sys.__stdout__
 
-class MP3:
+class Audio:
     def play(self, path: str):
         pygame.mixer.init()
         pygame.mixer.music.load(path)
