@@ -19,7 +19,7 @@ class Led:
         events.onProcessed += self.__processed
 
     def __processed(self):
-        self.__once(0, 0, 0, 0)
+        self.pixelRing.set_color(r=0, g=0, b=0)
 
     def __trigger(self):
         self.pixelRing.set_color(r=255, g=255, b=255)
