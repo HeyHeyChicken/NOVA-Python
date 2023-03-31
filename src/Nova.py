@@ -33,16 +33,6 @@ from src.plugins.led.index import Led
 #endregion
 
 class Nova:
-    """
-    def alert(self, index: int = 0):
-        if index >= 12:
-            index = 0
-        print(index)
-        self.pixelRing.set_led_color(255, 0, 0, index)
-        time.sleep(0.5)
-        self.alert(index + 1)
-    """
-    
     def __init__(self, rootPath: str):
         self.events = Events()
         self.model = None
