@@ -59,7 +59,7 @@ class Nova:
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
                 module = __import__("src.plugins." + pluginFolderName + ".index", fromlist=['Plugin'])
-                klass = getattr(module, 'my_class')
+                klass = getattr(module, 'Plugin')
                 print(pluginFolderName)
                 print(klass)
                 plugin_class = getattr(module, "Plugin")
