@@ -45,10 +45,8 @@ class Plugin:
 
     def countDown(self, intent: Intent, result: ProcessorResult):
         valueString: str = intent.variables['number']
-        print("------>", valueString)
         if valueString in self.integers:
             valueInt: int = self.integers.index(valueString)
-            print("------>", valueInt)
             answer: str = ""
 
             inputNumber = valueInt + 1
