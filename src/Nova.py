@@ -46,7 +46,7 @@ class Nova:
         self.microMode: int = 1 # 0 = nothing, 1 = keyword, 2 = listening
         #self.haveWakeWordDetection: bool = False
 
-        settingsPath = os.path.join(rootPath, "settings.json")
+        settingsPath: str = os.path.join(rootPath, "settings.json")
         self.settings = json.load(open(settingsPath, encoding='utf-8'))
 
         power = GPIO_LED(5)
@@ -54,8 +54,8 @@ class Nova:
 
         #region Plugins loading
 
-        pluginsDirectory: str = "plugins"
-        print(rootPath)
+        pluginsDirectory: str =os.path.join(rootPath, "src", "plugins")
+        print(pluginsDirectory)
         for filename in os.listdir(pluginsDirectory):
             f = os.path.join(pluginsDirectory, filename)
             # checking if it is a file
