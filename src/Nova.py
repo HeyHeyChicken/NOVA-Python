@@ -18,14 +18,6 @@ from src.Audio import Audio
 from gpiozero import LED as GPIO_LED
 
 class Nova:
-    def my_import(self, name):
-        components = name.split('.')
-        mod = __import__(components[0])
-        for comp in components[1:]:
-            print("ok", comp)
-            mod = getattr(mod, comp)
-        return mod
-    
     def __init__(self, rootPath: str):
         self.events = Events()
         self.model = None
@@ -51,9 +43,12 @@ class Nova:
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
-                module = self.my_import("src.plugins." + pluginFolderName + ".index")
+                module = __import__("src.plugins." + pluginFolderName + ".index")
                 print(pluginFolderName)
-                module(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+                for comp in module:
+                    print(comp)
+                plugin_class = getattr(module, "Plugin")
+                plugin_class(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
         """
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
