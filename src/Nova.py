@@ -57,7 +57,7 @@ class Nova:
         pluginsDirectoryPath: str =os.path.join(rootPath, "src", "plugins")
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath = os.path.join(pluginsDirectoryPath, pluginFolderName)
-            if os.path.isdir(pluginFolderPath)
+            if os.path.isdir(pluginFolderPath):
                 print(pluginFolderPath)
 
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
