@@ -55,6 +55,7 @@ class Nova:
         #region Plugins loading
 
         pluginsDirectory: str = "plugins"
+        print(rootPath)
         for filename in os.listdir(pluginsDirectory):
             f = os.path.join(pluginsDirectory, filename)
             # checking if it is a file
