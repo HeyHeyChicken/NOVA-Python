@@ -34,7 +34,7 @@ class Count:
             valueInt: int = self.integers.index(valueString)
             answer: str = ""
 
-            for index in range(int()):
+            for index in range(valueInt):
                 nb: int = index + 1
                 answer += str(nb)
                 if nb < int(intent.variables['number']):
