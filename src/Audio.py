@@ -19,6 +19,8 @@ class Audio:
         self.mixers.append(mixer)
         mixer.music.play()
 
-        while True:
+        running = True
+        while running:
             for event in pygame.event.get():
                 print(event.type)
+                running = False
