@@ -58,8 +58,7 @@ class Nova:
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
-                pluginIndexPath: str = os.path.join(pluginFolderPath, "index.py")
-                module = __import__("src.plugins.volume.index")
+                module = __import__("src.plugins." + pluginFolderName + ".index")
                 print(module)
 
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
