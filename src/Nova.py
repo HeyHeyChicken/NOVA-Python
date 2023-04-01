@@ -126,6 +126,7 @@ class Nova:
                     keyword_index = self.porcupine.process(pcm)
                     if keyword_index >= 0:
                         Thread(target=self.events.onTrigger).start()
+                        self.audio.pauseAll()
                         self.microMode = 2
 
                 if self.microMode == 2:
