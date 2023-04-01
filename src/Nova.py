@@ -43,9 +43,9 @@ class Nova:
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
-                module = __import__("src.plugins." + pluginFolderName)
+                module = __import__("src.plugins." + pluginFolderName + ".index")
                 print(pluginFolderName)
-                print(dir(module))
+                print(module)
                 plugin_class = getattr(module, "Plugin")
                 plugin_class(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
