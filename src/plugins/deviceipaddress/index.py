@@ -14,6 +14,10 @@ class Plugin:
         processor.addAction("deviceipaddress.get", self.deviceIPAddressGet)
 
     def deviceIPAddressGet(self, intent: Intent, result: ProcessorResult):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        print(s.getsockname()[0])
+
         intent.variables["address"] = socket.gethostbyname(socket.gethostname())
         self.tts(intent.answer())
         
