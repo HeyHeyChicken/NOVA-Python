@@ -12,10 +12,11 @@ class Audio:
         mixer = pygame.mixer
         mixer.init()
         mixer.music.load(path)
-        mixer.music.set_endevent(self.__playEnd)
+        mixer.music.set_endevent(len(self.mixers))
 
         self.mixers.append(mixer)
         mixer.music.play()
 
-    def __playEnd(self):
-        print(len(self.mixers))
+        while True:
+            for event in pygame.event.get():
+                print(event.type)
