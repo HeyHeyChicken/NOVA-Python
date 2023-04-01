@@ -17,21 +17,6 @@ from src.TTS import TTS
 from src.Audio import Audio
 from gpiozero import LED as GPIO_LED
 
-#region Plugins imports
-"""
-from src.plugins.timer.index import Timer
-from src.plugins.chatbot.index import ChatBot
-from src.plugins.datedaytimeyear.index import DateDayTimeYear
-from src.plugins.deviceipaddress.index import DeviceIPAddress
-from src.plugins.mediastack.index import MediaStack
-from src.plugins.count.index import Count
-from src.plugins.homepodsounds.index import HomePodSounds
-from src.plugins.random.index import Random
-from src.plugins.volume.index import Volume
-from src.plugins.led.index import Led
-"""
-#endregion
-
 class Nova:
     def __init__(self, rootPath: str):
         self.events = Events()
@@ -62,18 +47,6 @@ class Nova:
                 pluginClass = getattr(module, "Plugin")
                 pluginClass(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
-        """
-        DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        ChatBot(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        DeviceIPAddress(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        Random(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        Count(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        Timer(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        HomePodSounds(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        Volume(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        Led(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-        """
         #endregion
 
         if self.settings["porcupine"]["key"] == "":
