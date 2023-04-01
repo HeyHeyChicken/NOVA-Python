@@ -44,17 +44,21 @@ class Count:
             self.tts(answer)
 
     def countDown(self, intent: Intent, result: ProcessorResult):
-        answer: str = ""
-        inputNumber = int(intent.variables['number']) + 1
-        loopArray = range(inputNumber)
-        loopList = list(reversed(loopArray))
-        for index in loopList:
-            answer += str(index)
-            if index == 0:
-                answer += "."
-            else:
-                answer += ", "
-        self.tts(answer)
+        valueString: str = intent.variables['number']
+        if valueString in self.integers:
+            valueInt: int = self.integers.index(valueString)
+            answer: str = ""
+
+            inputNumber = valueInt + 1
+            loopArray = range(inputNumber)
+            loopList = list(reversed(loopArray))
+            for index in loopList:
+                answer += str(index)
+                if index == 0:
+                    answer += "."
+                else:
+                    answer += ", "
+            self.tts(answer)
 
     def countFromTo(self, intent: Intent, result: ProcessorResult):
         answer: str = ""
