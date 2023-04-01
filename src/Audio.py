@@ -6,7 +6,12 @@ import pygame
 sys.stdout = sys.__stdout__
 
 class Audio:
+    mixers = []
+
     def play(self, path: str):
-        pygame.mixer.init()
-        pygame.mixer.music.load(path)
-        pygame.mixer.music.play()
+        mixer = pygame.mixer
+        mixer.init()
+        mixer.music.load(path)
+        self.mixers.append(mixer)
+        mixer.music.play()
+        print("Music end")
