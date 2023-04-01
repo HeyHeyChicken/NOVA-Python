@@ -14,4 +14,4 @@ class Audio:
         mixer.music.load(path)
         self.mixers.append(mixer)
         mixer.music.play()
-        print(self.mixers)
+        print(len(self.mixers))
