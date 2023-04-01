@@ -59,8 +59,10 @@ class Nova:
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
                 module = __import__("src.plugins." + pluginFolderName + ".index")
-                print(module)
+                plugin_class = getattr(module, "HomePodSounds")
+                plugin_class(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
+        """
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         ChatBot(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
@@ -71,7 +73,7 @@ class Nova:
         HomePodSounds(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         Volume(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         Led(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
-
+        """
         #endregion
 
         if self.settings["porcupine"]["key"] == "":
