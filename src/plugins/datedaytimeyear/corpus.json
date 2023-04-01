@@ -47,19 +47,5 @@
     "answers": [
       "Nous sommes en %year%."
     ]
-  },
-  {
-    "intent": "day.get",
-    "utterances": [
-      "Quel jour il est",
-      "Quel jour est-il",
-      "Quel jour est-on",
-      "Quel jour sommes-nous",
-      "Quel jour de la semaine sommes-nous",
-      "Quel jour on est"
-    ],
-    "answers": [
-      "Nous sommes %day%."
-    ]
   }
 ]
