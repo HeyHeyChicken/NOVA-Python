@@ -17,6 +17,21 @@ from src.TTS import TTS
 from src.Audio import Audio
 from gpiozero import LED as GPIO_LED
 
+#region Plugins imports
+"""
+from src.plugins.timer.index import Timer
+from src.plugins.chatbot.index import ChatBot
+from src.plugins.datedaytimeyear.index import DateDayTimeYear
+from src.plugins.deviceipaddress.index import DeviceIPAddress
+from src.plugins.mediastack.index import MediaStack
+from src.plugins.count.index import Count
+from src.plugins.homepodsounds.index import HomePodSounds
+from src.plugins.random.index import Random
+from src.plugins.volume.index import Volume
+from src.plugins.led.index import Led
+"""
+#endregion
+
 class Nova:
     def __init__(self, rootPath: str):
         self.events = Events()
@@ -43,11 +58,10 @@ class Nova:
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
-                module = __import__("src.plugins." + pluginFolderName + ".index")
+                module = __import__("src.plugins." + pluginFolderName + ".index", fromlist=['Plugin'])
+                klass = getattr(module, 'my_class')
                 print(pluginFolderName)
-                print(module)
-                js: str = json.dumps(module)
-                print(js)
+                print(klass)
                 plugin_class = getattr(module, "Plugin")
                 plugin_class(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
