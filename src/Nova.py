@@ -54,6 +54,12 @@ class Nova:
 
         #region Plugins loading
 
+        pluginsDirectory: str = "plugins"
+        for filename in os.listdir(pluginsDirectory):
+            f = os.path.join(pluginsDirectory, filename)
+            # checking if it is a file
+            print(f)
+
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         ChatBot(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
