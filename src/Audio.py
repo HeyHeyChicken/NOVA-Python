@@ -8,13 +8,12 @@ sys.stdout = sys.__stdout__
 class Audio:
     mixers = []
 
-    def __init__(self):
-        pygame.init()
-
     def play(self, path: str):
+        pygame.init();
         mixer = pygame.mixer
         mixer.init()
         mixer.music.load(path)
+        mixer.music.set_volume(1)
         mixer.music.set_endevent(len(self.mixers))
 
         self.mixers.append(mixer)
