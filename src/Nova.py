@@ -56,9 +56,10 @@ class Nova:
 
         pluginsDirectoryPath: str =os.path.join(rootPath, "src", "plugins")
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
-            pluginFolderPath = os.path.join(pluginsDirectoryPath, pluginFolderName)
+            pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
-                print(pluginFolderPath)
+                pluginIndexPath: str = os.path.join(pluginFolderPath, "index.py")
+                print(pluginIndexPath)
 
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
