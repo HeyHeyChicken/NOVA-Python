@@ -61,8 +61,8 @@ class Plugin:
             self.tts(answer)
 
     def countFromTo(self, intent: Intent, result: ProcessorResult):
-        fromString: int = int(intent.variables['from'])
-        toString: int = int(intent.variables['to'])
+        fromString: int = intent.variables['from']
+        toString: int = intent.variables['to']
         if fromString in self.integers:
             if toString in self.integers:
                 fromInt: int = self.integers.index(fromString)
