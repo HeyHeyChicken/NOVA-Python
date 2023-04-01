@@ -59,8 +59,8 @@ class Nova:
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
             if os.path.isdir(pluginFolderPath):
                 module = __import__("src.plugins." + pluginFolderName + ".index", fromlist=['Plugin'])
-                klass = getattr(module, 'Plugin')
-                #plugin_class(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+                pluginClass = getattr(module, "Plugin")
+                pluginClass(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
 
         """
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
