@@ -6,6 +6,20 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.Audio import Audio
 
 class Count:
+    integers: str() = [
+        "zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf",
+        "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf",
+        "vingt", "vingt et une", "vingt-deux", "vingt-trois", "vingt-quatre", "vingt-cinq", "vingt-six", "vingt-sept", "vingt-huit", "vingt-neuf",
+        "trente", "trente et une", "trente-deux", "trente-trois", "trente-quatre", "trente-cinq", "trente-six", "trente-sept", "trente-huit", "trente-neuf",
+        "quarante", "quarante et une", "quarante-deux", "quarante-trois", "quarante-quatre", "quarante-cinq", "quarante-six", "quarante-sept", "quarante-huit", "quarante-neuf",
+        "cinquante", "cinquante et une", "cinquante-deux", "cinquante-trois", "cinquante-quatre", "cinquante-cinq", "cinquante-six", "cinquante-sept", "cinquante-huit", "cinquante-neuf",
+        "soixante", "soixante et une", "soixante-deux", "soixante-trois", "soixante-quatre", "soixante-cinq", "soixante-six", "soixante-sept", "soixante-huit", "soixante-neuf",
+        "soixante-dix", "soixante et onze", "soixante-douze", "soixante-treize", "soixante-quatorze", "soixante-quinze", "soixante-seize", "soixante-dix-sept", "soixante-dix-huit", "soixante-dix-neuf",
+        "quatre-vingts", "quatre-vingt-une", "quatre-vingt-deux", "quatre-vingt-trois", "quatre-vingt-quatre", "quatre-vingt-cinq", "quatre-vingt-six", "quatre-vingt-sept", "quatre-vingt-huit", "quatre-vingt-neuf",
+        "quatre-vingt-dix", "quatre-vingt-onze", "quatre-vingt-douze", "quatre-vingt-treize", "quatre-vingt-quatorze", "quatre-vingt-quinze", "quatre-vingt-seize", "quatre-vingt-dix-sept", "quatre-vingt-dix-huit", "quatre-vingt-dix-neuf",
+        "cent"
+    ]
+
     def __init__(self, processor: Processor, mp3: Audio, tts, events: Events, settings):
         self.tts = tts
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
@@ -15,15 +29,19 @@ class Count:
         processor.addAction("count.from.to", self.countFromTo)
 
     def countUp(self, intent: Intent, result: ProcessorResult):
-        answer: str = ""
-        for index in range(int(intent.variables['number'])):
-            nb: int = index + 1
-            answer += str(nb)
-            if nb < int(intent.variables['number']):
-                answer += ", "
-            else:
-                answer += "."
-        self.tts(answer)
+        valueString: str = intent.variables['number']
+        if valueString in self.integers:
+            valueInt: int = self.integers.index(valueString)
+            answer: str = ""
+
+            for index in range(int()):
+                nb: int = index + 1
+                answer += str(nb)
+                if nb < int(intent.variables['number']):
+                    answer += ", "
+                else:
+                    answer += "."
+            self.tts(answer)
 
     def countDown(self, intent: Intent, result: ProcessorResult):
         answer: str = ""
