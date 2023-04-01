@@ -39,6 +39,7 @@ class Nova:
 
         #region Plugins loading
 
+        self.print("Plugins loading...", "white")
         pluginsDirectoryPath: str =os.path.join(rootPath, "src", "plugins")
         for pluginFolderName in os.listdir(pluginsDirectoryPath):
             pluginFolderPath: str = os.path.join(pluginsDirectoryPath, pluginFolderName)
@@ -46,6 +47,7 @@ class Nova:
                 module = __import__("src.plugins." + pluginFolderName + ".index", fromlist=['Plugin'])
                 pluginClass = getattr(module, "Plugin")
                 pluginClass(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
+        self.print("Plugins loaded...")
 
         #endregion
 
