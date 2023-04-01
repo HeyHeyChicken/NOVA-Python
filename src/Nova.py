@@ -22,6 +22,7 @@ class Nova:
         components = name.split('.')
         mod = __import__(components[0])
         for comp in components[1:]:
+            print(comp)
             mod = getattr(mod, comp)
         return mod
     
