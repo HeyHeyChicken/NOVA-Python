@@ -54,12 +54,11 @@ class Nova:
 
         #region Plugins loading
 
-        pluginsDirectory: str =os.path.join(rootPath, "src", "plugins")
-        print(pluginsDirectory)
-        for filename in os.listdir(pluginsDirectory):
-            f = os.path.join(pluginsDirectory, filename)
-            # checking if it is a file
-            print(f)
+        pluginsDirectoryPath: str =os.path.join(rootPath, "src", "plugins")
+        for pluginFolderName in os.listdir(pluginsDirectoryPath):
+            pluginFolderPath = os.path.join(pluginsDirectoryPath, pluginFolderName)
+            if os.path.isdir(pluginFolderPath)
+                print(pluginFolderPath)
 
         DateDayTimeYear(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
         MediaStack(self.naturalLanguageProcessor, self.audio, self.TTS, self.events, self.settings)
