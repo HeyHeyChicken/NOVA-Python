@@ -6,7 +6,7 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.Audio import Audio
 
-class DateDayTimeYear:
+class Plugin:
     weekDays: str() = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
     months: str() = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 

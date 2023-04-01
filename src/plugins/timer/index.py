@@ -7,7 +7,7 @@ from src.NaturalLanguage.Processor import Processor
 from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.Audio import Audio
 
-class Timer:
+class Plugin:
     alarms: bool() = []
     integers: str() = [
         "zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf",

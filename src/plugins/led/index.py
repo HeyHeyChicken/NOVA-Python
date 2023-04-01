@@ -6,7 +6,7 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 import time
 from src.libraries.pixel_ring.pixel_ring import PixelRing
 
-class Led:
+class Plugin:
     def __init__(self, processor: Processor, mp3: Audio, tts, events: Events, settings):
         self.pixelRing = PixelRing()
         self.booting: bool = False
