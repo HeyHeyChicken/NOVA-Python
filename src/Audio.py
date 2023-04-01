@@ -14,13 +14,10 @@ class Audio:
         mixer.init()
         mixer.music.load(path)
         mixer.music.set_volume(1)
-        mixer.music.set_endevent(len(self.mixers))
 
         self.mixers.append(mixer)
         mixer.music.play()
 
-        running = True
-        while running:
-            for event in pygame.event.get():
-                print(event.type)
-                running = False
+    def pauseAll(self):
+        for mixer in self.mixers:
+            mixer.music.pause()
