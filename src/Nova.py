@@ -18,7 +18,7 @@ from src.Audio import Audio
 from gpiozero import LED as GPIO_LED
 
 class Nova:
-    def my_import(name):
+    def my_import(self, name):
         components = name.split('.')
         mod = __import__(components[0])
         for comp in components[1:]:
