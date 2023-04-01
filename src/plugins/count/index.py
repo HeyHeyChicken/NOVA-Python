@@ -37,7 +37,7 @@ class Count:
             for index in range(valueInt):
                 nb: int = index + 1
                 answer += str(nb)
-                if nb < int(intent.variables['number']):
+                if nb < valueInt:
                     answer += ", "
                 else:
                     answer += "."
