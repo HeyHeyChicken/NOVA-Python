@@ -21,6 +21,7 @@ class Plugin:
 
     def dateGet(self, intent: Intent, result: ProcessorResult):
         now: datetime = datetime.datetime.now()
+        print(now.month)
         intent.variables["date"] = self.weekDays[now.weekday()] + " " + str(now.day) + " " + self.months[now.month] + " " + str(now.year)
         self.tts(intent.answer())
 
