@@ -20,9 +20,12 @@ class Plugin:
         resp = requests.get(url='http://api.mediastack.com/v1/news?countries=fr&access_key=' + self.apiKey, headers={'Accept': 'application/json'})
         data = resp.json()
 
+        if(data["error"]):
+            print(data["error"]["message"])
+            return
+
         phrase: str = "Voici les dernières actualités : "
         index: int = 0
-        print(data)
         for actu in data["data"]:
             if index < 3:
                 description: str = actu["description"]
