@@ -26,4 +26,5 @@ class Audio:
             mixer.pause()
 
     def onEnd(self, event, callback):
-        callback()
+        if(callback != None):
+            callback()
