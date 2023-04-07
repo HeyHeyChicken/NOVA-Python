@@ -1,22 +1,16 @@
 from vlc import MediaPlayer
 from vlc import EventType
-import sys, os
-sys.stdout = open(os.devnull, 'w')
-
-import pygame
-
-sys.stdout = sys.__stdout__
 
 class Audio:
     mixers = []
 
-    def play(self, path: str):
+    def play(self, path: str, callback):
         player = MediaPlayer(path)
-        player.event_manager().event_attach(EventType.MediaPlayerStopped, self.onEnd, "lol")
+        player.event_manager().event_attach(EventType.MediaPlayerStopped, self.onEnd, callback)
         self.mixers.append(player)
         player.play()
         """
-        pygame.init();
+        pygame.init()
         mixer = pygame.mixer
         mixer.init()
         mixer.music.load(path)
@@ -31,5 +25,5 @@ class Audio:
             #mixer.music.pause()
             mixer.pause()
 
-    def onEnd(self, event, ok):
-        print(event, ok)
+    def onEnd(self, event, callback):
+        callback()
