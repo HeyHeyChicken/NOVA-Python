@@ -99,7 +99,7 @@ class Nova:
 
         Thread(target=self.events.onBooted).start()
 
-        self.processTextFromUser("Volume du son à 50 pour cent")
+        self.processTextFromUser("volume du son à 50 pour cent")
 
         with sounddevice.RawInputStream(samplerate=self.samplerate, blocksize = self.porcupine.frame_length, device=self.device, dtype='int16', channels=1, latency='high', callback=self.callback):
             print('#' * 80)
