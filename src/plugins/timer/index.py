@@ -29,6 +29,7 @@ class Plugin:
         processor.loadJson(os.path.join(os.path.dirname(__file__), "corpus.json"))
 
         processor.addAction("timer.minutes", self.__timerMinutes)
+        processor.addAction("timer.secondes", self.__timerSecondes)
         processor.addAction("timer.stop", self.__timerStop)
     
     def __timerRing(self, args):
@@ -36,31 +37,45 @@ class Plugin:
         Thread(target=self.__timerRingLoop, args=(args,alarmPath)).start()
     
     def __timerRingLoop(self, args, alarmPath: str):
-        while(self.alarms[args[0]] == False):
-            print("play")
-            self.mp3.play(alarmPath)
+        #while(self.alarms[args[0]] == False):
+        #    print("play")
+        self.mp3.play(alarmPath)
     
     def __timerStop(self, intent: Intent, result: ProcessorResult):
         for index, alarm in enumerate(self.alarms):
             self.alarms[index] = True
+
+    def __timerSecondes(self, intent: Intent, result: ProcessorResult):
+        secondesString: str = intent.variables['secondes']
+        if secondesString in self.integers:
+            secondesInt: int = self.integers.index(secondesString)
+
+            self.__timer(secondesInt * 1000)
+
+            intent.variables["secondes"] = intent.variables['secondes']
+            self.tts(intent.answer())
 
     def __timerMinutes(self, intent: Intent, result: ProcessorResult):
         minutesString: str = intent.variables['minutes']
         if minutesString in self.integers:
             minutesInt: int = self.integers.index(minutesString)
 
-            index: int = -1
-            for loopIndex, alarm in enumerate(self.alarms):
-                if self.alarms[loopIndex] == True:
-                    index = loopIndex
-            if index < 0:
-                index = len(self.alarms)
-                self.alarms.append(False)
-
-            SetTimeOut(self.__timerRing, minutesInt * 60 * 1000, [index])
+            self.__timer(minutesInt * 60 * 1000)
 
             intent.variables["minutes"] = intent.variables['minutes']
             self.tts(intent.answer())
+
+    def __timer(self, time: int):
+        index: int = -1
+        for loopIndex, alarm in enumerate(self.alarms):
+            if self.alarms[loopIndex] == True:
+                index = loopIndex
+        if index < 0:
+            index = len(self.alarms)
+            self.alarms.append(False)
+
+        SetTimeOut(self.__timerRing, time, [index])
+
 
 
 
