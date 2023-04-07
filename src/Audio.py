@@ -12,8 +12,7 @@ class Audio:
 
     def play(self, path: str):
         player = MediaPlayer(path)
-        player.event_manager().event_attach(EventType.MediaPlayerPlaying, self.onEnd)
-        print("start")
+        player.event_manager().event_attach(EventType.MediaPlayerStopped, self.onEnd)
         self.mixers.append(player)
         player.play()
         """
@@ -26,7 +25,6 @@ class Audio:
         self.mixers.append(mixer)
         mixer.music.play()
         """
-        print("end")
 
     def pauseAll(self):
         for mixer in self.mixers:
@@ -34,4 +32,4 @@ class Audio:
             mixer.pause()
 
     def onEnd(self, event):
-        print("onEnd:", event.type)
+        print(event)
