@@ -20,6 +20,26 @@
     ]
   },
   {
+    "intent": "timer.secondes",
+    "utterances": [
+      "Mais un minuteur de {secondes} secondes",
+      "Mais un minuteur de {secondes} seconde",
+      "Mets un minuteur de {secondes} secondes",
+      "Mets un minuteur de {secondes} seconde",
+      "Réveil moi dans {secondes} secondes",
+      "Réveil moi dans {secondes} seconde",
+      "Réveille-moi dans {secondes} secondes",
+      "Réveille-moi dans {secondes} seconde",
+      "Rêver moi dans {secondes} secondes",
+      "Rêver moi dans {secondes} seconde"
+    ],
+    "answers": [
+      "%secondes% secondes, à partir de maintenant.",
+      "J'ai créé un minuteur de %secondes% secondes.",
+      "Très bien, un minuteur de %secondes% secondes."
+    ]
+  },
+  {
     "intent": "timer.stop",
     "utterances": [
       "Stop"
