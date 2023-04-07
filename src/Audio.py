@@ -4,7 +4,7 @@ from vlc import EventType
 class Audio:
     mixers = []
 
-    def play(self, path: str, callback):
+    def play(self, path: str, callback = None):
         player = MediaPlayer(path)
         player.event_manager().event_attach(EventType.MediaPlayerStopped, self.onEnd, callback)
         self.mixers.append(player)
