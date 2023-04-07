@@ -7,7 +7,7 @@ class Audio:
     def play(self, path: str, callback = None):
         player = MediaPlayer(path)
         player.event_manager().event_attach(EventType.MediaPlayerStopped, self.onEnd, callback)
-        self.mixers.append(player)
+        #self.mixers.append(player)
         player.play()
         """
         pygame.init()
