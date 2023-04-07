@@ -7,6 +7,7 @@ from src.NaturalLanguage.ProcessorResult import ProcessorResult
 from src.Audio import Audio
 
 class Plugin:
+    name: str = "MediaStack"
     apiKey: str = ""
 
     def __init__(self, processor: Processor, mp3: Audio, tts, events: Events, settings):
@@ -21,7 +22,10 @@ class Plugin:
         data = resp.json()
 
         if(data["error"]):
-            print(data["error"]["message"])
+            if(data["error"]["code"] == "missing_access_key"):
+                print("[" + self.name + "] You have not supplied an API Access Key.")
+            else:
+                print("[" + self.name + "] " + data["error"]["message"])
             return
 
         phrase: str = "Voici les dernières actualités : "
