@@ -34,4 +34,4 @@ class Audio:
             mixer.pause()
 
     def onEnd(self, event):
-        print("onEnd:", event.type, event.u)
+        print("onEnd:", event.type)
