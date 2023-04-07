@@ -22,6 +22,7 @@ class Plugin:
 
         phrase: str = "Voici les dernières actualités : "
         index: int = 0
+        print(data)
         for actu in data["data"]:
             if index < 3:
                 description: str = actu["description"]
