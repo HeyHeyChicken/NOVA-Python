@@ -37,6 +37,7 @@ class Plugin:
     
     def __timerRingLoop(self, args, alarmPath: str):
         while(self.alarms[args[0]] == False):
+            print("play")
             self.mp3.play(alarmPath)
     
     def __timerStop(self, intent: Intent, result: ProcessorResult):
