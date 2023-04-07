@@ -1,3 +1,4 @@
+import vlc
 import sys, os
 sys.stdout = open(os.devnull, 'w')
 
@@ -9,6 +10,9 @@ class Audio:
     mixers = []
 
     def play(self, path: str):
+        p = vlc.MediaPlayer(path)
+        p.play()
+        """
         pygame.init();
         mixer = pygame.mixer
         mixer.init()
@@ -17,6 +21,7 @@ class Audio:
 
         self.mixers.append(mixer)
         mixer.music.play()
+        """
 
     def pauseAll(self):
         for mixer in self.mixers:
