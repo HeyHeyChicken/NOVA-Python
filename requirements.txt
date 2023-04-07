@@ -4,7 +4,6 @@ sounddevice
 pvporcupine
 pyaudio
 events
-pygame
 pyalsaaudio
 pyusb
 python-vlc
