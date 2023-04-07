@@ -2,6 +2,8 @@
   {
     "intent": "volume.percent",
     "utterances": [
+      "Volume du sens à {percent} pour cent",
+      "Volume du sens à {percent} pourcent",
       "Volume du son à {percent} pour cent",
       "Volume du son à {percent} pourcent"
     ],
