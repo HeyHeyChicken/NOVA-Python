@@ -34,9 +34,6 @@ python main.py
 
 I provide support for all users through [GitHub issues](//github.com/HeyHeyChicken/Nova-python/issues).
 
-<a href="//discord.gg/pkWbhDn" rel="nofollow"><img src="https://github.com/HeyHeyChicken/NOVA/blob/master/resources/join-us-discord.png" alt="Discord" width="200"></a><br/>
-
-
 ## 💻 Compatibility
 
 NOVA has only been officially tested Raspberry Pi 4.
