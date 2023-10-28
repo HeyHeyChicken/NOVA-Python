@@ -22,6 +22,10 @@ Clone it directly from GitHub.
 ```
 git clone https://github.com/HeyHeyChicken/Nova-python.git
 ```
+Install python dependencies.
+```
+pip install -r requirements.txt
+```
 
 ## 🚀 Usage
 
