@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/HeyHeyChicken/NOVA/blob/master/resources/github-logo.svg" alt="NOVA" width="300">
+<img src="https://github.com/HeyHeyChicken/NOVA/blob/master/.github/github-logo.svg" alt="NOVA" width="300">
 
 **NOVA** is an efficient personal assistant made with python.<br>
 <br>
@@ -14,7 +14,7 @@ You can communicate with it orally, most of his skills are designed to work offl
 
 ## 🔧 Prerequisites
 
-[<img src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/pythonLogo.png" width="18" /> Python](https://www.python.org/downloads/)
+[<img src="https://github.com/HeyHeyChicken/Nova-python/blob/main/.github/pythonLogo.png" width="18" /> Python](https://www.python.org/downloads/)
 
 ## ⬇️ Installation
 
@@ -45,10 +45,10 @@ NOVA has only been officially tested Raspberry Pi 4.
 ## 📦 A great case
 
 Hey, I made a case for my NOVA hosted in a Raspberry PI 4.<br/>
-You can find the SketchUp plan in NOVA/resources/NOVA_SketchUp_Case.skp.<br/><br/>
-<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/NOVA_SketchUp_Case.gif">
-<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/NOVA_Case_Without.jpeg">
-<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/resources/NOVA_Case.jpeg">
+You can find the SketchUp plan in NOVA/.github/NOVA_SketchUp_Case.skp.<br/><br/>
+<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/.github/NOVA_SketchUp_Case.gif">
+<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/.github/NOVA_Case_Without.jpeg">
+<img height="200px" src="https://github.com/HeyHeyChicken/Nova-python/blob/main/.github/NOVA_Case.jpeg">
 
 <br>
 <br>
