@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/HeyHeyChicken/NOVA/blob/master/.github/github-logo.svg" alt="NOVA" width="300">
+<img src="https://raw.githubusercontent.com/HeyHeyChicken/NOVA-Python/5a29220303b46036c4028cb177e7b5191bd068ad/.github/github-logo.svg" alt="NOVA" width="300">
 
 **NOVA** is an efficient personal assistant made with python.<br>
 <br>
